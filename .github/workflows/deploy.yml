@@ -23,7 +23,7 @@ jobs:
       - name: Build Next.js
         run: npm run build
 
-      # Clean the remote target directory before copying new files
+      # Clean the remote target directory before copying new file s
       - name: Clean remote directory
         uses: appleboy/ssh-action@v1.0.0
         with:
