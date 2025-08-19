@@ -1,0 +1,50 @@
+.autoFit {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+  width: min(100%, 800px);
+  margin-inline: auto;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  align-items: stretch;
+  justify-items: stretch;
+}
+
+.spanTwo {
+  grid-column: span 2;
+}
+
+.fieldWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  width: 100%;
+}
+
+.select,
+.textInput,
+.textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--neutral-alpha-medium);
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.select,
+.textInput {
+  height: 44px;
+}
+
+.textarea {
+  resize: vertical;
+}
+
+@media (max-width: 639px) {
+  .spanTwo {
+    grid-column: span 1;
+  }
+}
