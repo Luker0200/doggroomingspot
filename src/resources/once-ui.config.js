@@ -1,7 +1,7 @@
 import { home } from "./content";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL = "https://doggroomingspot.com";
+const baseURL = "https://www.doggroomingspot.com";
 
 const routes = {
   "/": true,
@@ -174,10 +174,10 @@ const mailchimp = {
 // default schema data
 const schema = {
   logo: "",
-  type: "Organization",
-  name: "Once UI",
+  type: "",
+  name: "The Grooming Spot",
   description: home.description,
-  email: "lorant@once-ui.com",
+  email: "",
 };
 
 // social links

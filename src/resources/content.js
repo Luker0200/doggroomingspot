@@ -27,7 +27,6 @@ const newsletter = {
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
-      I occasionally write and send out newsletters about my business and the services I offer.
     </>
   ),
 };
@@ -59,7 +58,7 @@ const social = [
 
 const home = {
   path: "/",
-  image: "/images/og/home.jpg",
+  image: "",
   label: "Home",
   title: `The Grooming Spot`,
   description: ``,
