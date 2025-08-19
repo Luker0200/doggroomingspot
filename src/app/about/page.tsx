@@ -135,33 +135,51 @@ export default function About() {
               {person.role}
             </Text>
             {social.length > 0 && (
-              <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth data-border="rounded">
-                {social.map(
-                  (item) =>
-                    item.link && (
-                        <React.Fragment key={item.name}>
-                            <Button
-                                className="s-flex-hide"
-                                key={item.name}
-                                href={item.link}
-                                prefixIcon={item.icon}
-                                label={item.name}
-                                size="s"
-                                weight="default"
-                                variant="secondary"
-                            />
-                            <IconButton
-                                className="s-flex-show"
-                                size="l"
-                                key={`${item.name}-icon`}
-                                href={item.link}
-                                icon={item.icon}
-                                variant="secondary"
-                            />
-                        </React.Fragment>
-                    ),
-                )}
-              </Flex>
+              <Column gap="12" horizontal="start">
+                <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="start" fitWidth data-border="rounded">
+                  {social.map(
+                    (item) =>
+                      item.link && (
+                          <React.Fragment key={item.name}>
+                              <Button
+                                  className="s-flex-hide"
+                                  key={item.name}
+                                  href={item.link}
+                                  prefixIcon={item.icon}
+                                  label={item.name}
+                                  size="s"
+                                  weight="default"
+                                  variant="secondary"
+                              />
+                              <IconButton
+                                  className="s-flex-show"
+                                  size="l"
+                                  key={`${item.name}-icon`}
+                                  href={item.link}
+                                  icon={item.icon}
+                                  variant="secondary"
+                              />
+                          </React.Fragment>
+                      ),
+                  )}
+                </Flex>
+                <Flex gap="16" vertical="center">
+                  <Flex gap="8" vertical="center">
+                    <Icon name="email" size="xs" />
+                    <a href={`mailto:${person.email}`} style={{ color: "inherit", textDecoration: "none" }}>
+                      <Text variant="body-default-m">{person.email}</Text>
+                    </a>
+                  </Flex>
+                  {person.phone && (
+                    <Flex gap="8" vertical="center">
+                      <Icon name="phone" size="xs" />
+                      <a href={`tel:${person.phone.replace(/[^+\\d]/g, "")}`} style={{ color: "inherit", textDecoration: "none" }}>
+                        <Text variant="body-default-m">{person.phone}</Text>
+                      </a>
+                    </Flex>
+                  )}
+                </Flex>
+              </Column>
             )}
           </Column>
 

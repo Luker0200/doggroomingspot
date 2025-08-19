@@ -37,11 +37,19 @@ export default function Appointment() {
         <Text variant="body-default-l" style={{ textAlign: "center" }} color="neutral-on-background-weak">
           Fill out the form below to schedule your mobile dog grooming appointment
         </Text>
-        <Flex horizontal="center" gap="m">
-          <Badge background="accent-alpha-weak" onBackground="accent-strong">
-            Serving Magnolia, Woodlands, Tomball, Waller, Hockley, Pinehurst, and surrounding areas
-          </Badge>
-        </Flex>
+        <Column horizontal="center" gap="8">
+          <Text variant="heading-strong-s" style={{ textAlign: "center" }}>
+            Servicing
+          </Text>
+          <Flex horizontal="center">
+            <Badge background="accent-alpha-weak" onBackground="accent-strong">
+              Magnolia, Woodlands, Tomball, Waller, Hockley, Pinehurst
+            </Badge>
+          </Flex>
+          <Text variant="body-default-s" color="neutral-on-background-weak" style={{ textAlign: "center" }}>
+            and surrounding areas!
+          </Text>
+        </Column>
       </Column>
 
       {/* Appointment Form */}
@@ -71,11 +79,11 @@ export default function Appointment() {
         marginTop="l"
         style={{ textAlign: "center", width: "min(100%, 720px)", marginInline: "auto" }}
       >
-        <Column gap="s">
-          <Text variant="body-strong-s">
+        <Column gap="s" horizontal="center" fitWidth style={{ marginInline: "auto" }}>
+          <Text variant="body-strong-s" style={{ textAlign: "center" }}>
             Questions? Contact us directly:
           </Text>
-          <Flex horizontal="center" gap="m">
+          <Flex horizontal="center" gap="m" fitWidth>
             <Button
               href={`mailto:${person.email}`}
               variant="secondary"

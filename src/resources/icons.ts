@@ -5,6 +5,7 @@ import {
   HiOutlineLink,
   HiArrowTopRightOnSquare,
   HiEnvelope,
+  HiPhone,
   HiCalendarDays,
   HiArrowRight,
   HiOutlineEye,
@@ -12,6 +13,7 @@ import {
   HiOutlineDocument,
   HiOutlineGlobeAsiaAustralia,
   HiOutlineRocketLaunch,
+  HiOutlineClock,
 } from "react-icons/hi2";
 
 import {
@@ -21,6 +23,11 @@ import {
   PiBookBookmarkDuotone,
   PiImageDuotone,
   PiScissorsDuotone,
+  PiBathtubDuotone,
+  PiHairDryerDuotone,
+  PiPaintBrushDuotone,
+  PiFlowerDuotone,
+  PiPawPrintDuotone,
 } from "react-icons/pi";
 
 import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads, FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa6";
@@ -29,15 +36,22 @@ export const iconLibrary: Record<string, IconType> = {
   arrowUpRight: HiArrowUpRight,
   arrowRight: HiArrowRight,
   email: HiEnvelope,
+  phone: HiPhone,
   globe: HiOutlineGlobeAsiaAustralia,
   person: PiUserCircleDuotone,
   grid: PiGridFourDuotone,
   book: PiBookBookmarkDuotone,
   openLink: HiOutlineLink,
   calendar: HiCalendarDays,
+  clock: HiOutlineClock,
   home: PiHouseDuotone,
   gallery: PiImageDuotone,
   scissors: PiScissorsDuotone,
+  bathtub: PiBathtubDuotone,
+  hairDryer: PiHairDryerDuotone,
+  brush: PiPaintBrushDuotone,
+  flower: PiFlowerDuotone,
+  pawprint: PiPawPrintDuotone,
   discord: FaDiscord,
   eye: HiOutlineEye,
   eyeOff: HiOutlineEyeSlash,

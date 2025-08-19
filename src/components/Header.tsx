@@ -69,7 +69,7 @@ export const Header = () => {
               display: 'flex',
               alignItems: 'center',
               position: 'absolute',
-              left: '24px',
+              left: '0px',
               top: '50%',
               transform: 'translateY(-50%)',
               zIndex: 10
@@ -91,7 +91,7 @@ export const Header = () => {
           <Flex
             background="page"
             border="neutral-alpha-weak"
-            radius="m-4"
+            radius="xs"
             shadow="l"
             padding="4"
             horizontal="center"

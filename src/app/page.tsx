@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row, Schema } from "@once-ui-system/core";
+import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row, Schema, Icon } from "@once-ui-system/core";
 import { home, about, services, appointment, person, newsletter, baseURL } from "@/resources";
 import { Mailchimp, RevolvingGallery } from "@/components";
 
@@ -35,6 +35,24 @@ export default function Home() {
             <Heading wrap="balance" variant="display-strong-l">
               {home.headline}
             </Heading>
+          </RevealFx>
+          <RevealFx translateY="4" delay={0.25} fillWidth horizontal="start" paddingBottom="16">
+            <Flex gap="16" vertical="center">
+              <Flex gap="8" vertical="center">
+                <Icon name="email" size="xs" />
+                <a href={`mailto:${person.email}`} style={{ color: "inherit", textDecoration: "none" }}>
+                  <Text variant="body-default-m">{person.email}</Text>
+                </a>
+              </Flex>
+              {person.phone && (
+                <Flex gap="8" vertical="center">
+                  <Icon name="phone" size="xs" />
+                  <a href={`tel:${person.phone.replace(/[^+\\d]/g, "")}`} style={{ color: "inherit", textDecoration: "none" }}>
+                    <Text variant="body-default-m">{person.phone}</Text>
+                  </a>
+                </Flex>
+              )}
+            </Flex>
           </RevealFx>
           <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="32">
             <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">

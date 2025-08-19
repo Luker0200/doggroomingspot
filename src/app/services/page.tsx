@@ -1,4 +1,4 @@
-import { Column, Meta, Schema, Heading, Text, Flex, Badge, Card, Button } from "@once-ui-system/core";
+import { Column, Meta, Schema, Heading, Text, Flex, Badge, Card, Button, Icon } from "@once-ui-system/core";
 import { baseURL, about, person, services, business } from "@/resources";
 
 export async function generateMetadata() {
@@ -12,17 +12,29 @@ export async function generateMetadata() {
 }
 
 export default function Services() {
+  const getServiceIcon = (service: string) => {
+    const iconMap: Record<string, string> = {
+      "Haircut": "scissors",
+      "Warm bath": "bathtub", 
+      "Blow dry": "hairDryer",
+      "Brush out": "brush",
+      "Fragrance": "flower",
+      "Nail Trim & File": "pawprint"
+    };
+    return iconMap[service] || "scissors";
+  };
+
   const groomingServices = [
     {
       title: "Full Grooming",
-      description: "- Complete grooming package",
-      duration: "1.5-2 hours on average",
-      includes: ["Haircut", "Warm bath", "Blow dry", "Brush out", "Fragrance"]
+      description: "The Complete Package",
+      duration: "1.5-2 hr",
+      includes: ["Haircut", "Warm bath", "Blow dry", "Brush out", "Fragrance", "Nail Trim & File"]
     },
     {
       title: "Sanitary Groom",
-      description: "- Good clean and trim",
-      duration: "45-60 minutes on average",
+      description: "Clean and Trim",
+      duration: "45-60 min",
       includes: ["Warm bath", "Blow dry", "Brush out", "Fragrance"]
     }
   ];
@@ -55,7 +67,7 @@ export default function Services() {
   ];
 
   return (
-    <Column maxWidth="xl">
+    <Column maxWidth="xl" horizontal="center" fillWidth>
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -76,10 +88,15 @@ export default function Services() {
           Rates & Services
         </Heading>
         <Text variant="body-default-l" style={{ textAlign: "center" }} color="neutral-on-background-weak">
-          Professional mobile dog grooming services brought directly to your home in Magnolia, Texas. 
-          I am fully comfortable and experienced working with puppies 12 weeks or older and senior dogs, 
-          providing gentle care tailored to their specific needs.
+          Professional mobile dog grooming services brought directly to your home in Magnolia, Texas.
         </Text>
+        <Flex horizontal="center">
+          <Column as="ul" gap="0" style={{ textAlign: "left" }}>
+            <Text as="li" variant="body-default-m" color="neutral-on-background-weak">
+              I have no issue working with puppies 12 weeks or older and senior dogs; they will receive gentle care tailored to their specific needs.
+            </Text>
+          </Column>
+        </Flex>
         <Card
           background="brand-alpha-weak"
           padding="l"
@@ -92,41 +109,46 @@ export default function Services() {
       </Column>
 
       {/* Main Services */}
-      <Column gap="xl" marginBottom="xl">
+      <Column gap="xl" marginBottom="xl" fillWidth>
         <Heading variant="display-strong-s" style={{ textAlign: "center" }}>
           Grooming Services
         </Heading>
                  <div
            style={{
              display: "grid",
-                           gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
               gap: "20px",
               width: "100%",
-              maxWidth: "600px",
+              maxWidth: "680px",
              margin: "0 auto",
              alignItems: "stretch",
              justifyItems: "center",
+             justifyContent: "center",
+             padding: "0 16px",
            }}
          >
           {groomingServices.map((service, index) => (
                          <Card
                key={index}
                background="neutral-alpha-weak"
-                               padding="m"
-                style={{ height: "100%", minHeight: "320px", maxHeight: "360px" }}
+                               padding="s"
+                style={{ height: "100%", minHeight: "300px", maxHeight: "340px", width: "100%" }}
               >
                 <Column gap="s" style={{ height: "100%", justifyContent: "space-between" }}>
-                <Heading variant="display-strong-xs">
-                  {service.title}
-                </Heading>
+                <Flex horizontal="space-between" vertical="center" wrap>
+                  <Heading variant="display-strong-xs">
+                    {service.title}
+                  </Heading>
+                  <Badge background="neutral-alpha-weak" onBackground="neutral-strong" style={{ padding: "4px 8px" }}>
+                    <Flex vertical="center" gap="2">
+                      <Icon name="clock" size="xs" />
+                      <Text variant="body-default-xs">{service.duration}</Text>
+                    </Flex>
+                  </Badge>
+                </Flex>
                 <Text variant="body-default-s" color="neutral-on-background-weak">
                   {service.description}
                 </Text>
-                                 <Flex horizontal="start" vertical="center" marginTop="s">
-                   <Badge background="neutral-alpha-weak" onBackground="neutral-strong">
-                     {service.duration}
-                   </Badge>
-                 </Flex>
                 <Column gap="s" marginTop="m">
                                      <Text variant="body-strong-s" weight="default">
                      Includes:
@@ -139,9 +161,12 @@ export default function Services() {
                     }}
                   >
                     {service.includes.map((item, itemIndex) => (
-                      <Text key={itemIndex} variant="body-default-s" color="neutral-on-background-weak">
-                        • {item}
-                      </Text>
+                      <Flex key={itemIndex} vertical="center" gap="4">
+                        <Icon name={getServiceIcon(item)} size="xs" />
+                        <Text variant="body-default-s" color="neutral-on-background-weak">
+                          {item}
+                        </Text>
+                      </Flex>
                                          ))}
                    </div>
                  </Column>

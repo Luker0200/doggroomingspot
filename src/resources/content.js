@@ -7,8 +7,9 @@ const person = {
     return `${this.firstName} ${this.lastName}`;
   },
   role: "",
-  avatar: "/images/charleneprofilephoto.jpg",
-  email: "charcarmella@yahoo.com",
+  avatar: "/images/profilepic.JPG",
+  email: "doggroomingspot@gmail.com",
+  phone: "(832) 275-2222",
   location: "", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: [], // optional: Leave the array empty if you don't want to display languages
 };
@@ -44,21 +45,11 @@ const social = [
     icon: "facebook",
     link: "https://www.facebook.com/charlene.luke.54738/",
   },
-  {
-    name: "TikTok",
-    icon: "tiktok",
-    link: "https://www.tiktok.com/@charlene_luke",
-  },
-  {
-    name: "Email",
-    icon: "email",
-    link: `mailto:${person.email}`,
-  },
 ];
 
 const home = {
   path: "/",
-  image: "",
+  image: "/favicon.ico",
   label: "Home",
   title: `The Grooming Spot`,
   description: ``,
@@ -66,7 +57,7 @@ const home = {
   featured: {
     display: false,
     title: <>Recent Grooming: <strong className="ml-4">Poodle</strong></>,
-    href: "/services/building-once-ui-a-customizable-design-system",
+    href: "",
   },
   subline: (
     <>
@@ -153,7 +144,7 @@ const about = {
           Prior to grooming I graduated from college and worked in the medical field as an Ophthalmic Technician. I decided to make dog grooming an official career in 2011. I opened my business in Magnolia that year shortly after completing the academy, where they taught all breed standards of grooming, safety, and dog behavior.
         </p>
         <p>
-          I temporarily closed The Grooming Spot from approximately 2022 through mid-summer of 2025 while recovering from back surgery and hand surgery. I am happy to be fully recovered and back to work doing what I love! 💛
+          I temporarily closed The Grooming Spot from approximately 2022 through mid-summer of 2025 while recovering from back and hand surgery. I am happy to be fully recovered and back to work doing what I love! 💛
         </p>
         <p>
           The business is now mobile.
@@ -166,11 +157,11 @@ const about = {
     institutions: [
       {
         name: "Studied at Dog Grooming & Boarding School",
-        description: <>Studied dog grooming and animal behavior.</>,
+        description: <>Dog grooming and animal behavior.</>,
       },
       {
         name: "and Sam Houston State University",
-        description: <>Studied Psychology and Sociology.</>,
+        description: <>Psychology and Sociology.</>,
       },
       
     ],
