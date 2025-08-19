@@ -23,16 +23,27 @@ jobs:
       - name: Build Next.js
         run: npm run build
 
-      - name: Copy files to server
+      # Clean the remote target directory before copying new files
+      - name: Clean remote directory
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.DO_HOST }}
+          username: root
+          password: ${{ secrets.DO_PASSWORD }}
+          script: |
+            rm -rf ~/doggroomingspot/*
+            mkdir -p ~/doggroomingspot
+
+      - name: Copy build files to server
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.DO_HOST }}
           username: root
           password: ${{ secrets.DO_PASSWORD }}
-          source: ".next/*,public/*,package.json,package-lock.json,node_modules/*"
+          source: ".next,public,package.json,package-lock.json,node_modules"
           target: "~/doggroomingspot"
 
-      - name: Restart app via SSH
+      - name: Restart app via PM2
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.DO_HOST }}
@@ -41,3 +52,4 @@ jobs:
           script: |
             cd ~/doggroomingspot
             pm2 restart doggroomingspot || pm2 start npm --name "doggroomingspot" -- start
+            pm2 save
