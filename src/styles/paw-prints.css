@@ -1,5 +1,5 @@
-/* Sporadic Dog Paw Prints Overlay */
-.paw-prints::after {
+/* Floating Bubble Effect Overlay */
+.bubble2::after {
   content: '';
   position: fixed;
   top: 0;
@@ -8,76 +8,100 @@
   height: 100%;
   pointer-events: none;
   z-index: -1;
-  opacity: 0.12;
+  opacity: 0.18;
   background-image: 
-    /* Large dog paw prints using Phosphor PiPawPrintDuotone */
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E"),
+    /* Large floating bubbles with shine effect */
+    radial-gradient(circle at 12% 15%, rgba(135, 206, 250, 0.9) 20px, transparent 22px),
+    radial-gradient(circle at 67% 25%, rgba(100, 149, 237, 0.8) 18px, transparent 20px),
+    radial-gradient(circle at 23% 45%, rgba(173, 216, 230, 0.9) 22px, transparent 24px),
+    radial-gradient(circle at 85% 35%, rgba(135, 206, 250, 0.8) 16px, transparent 18px),
+    radial-gradient(circle at 45% 65%, rgba(100, 149, 237, 0.9) 19px, transparent 21px),
+    radial-gradient(circle at 8% 75%, rgba(173, 216, 230, 0.8) 21px, transparent 23px),
     
-    /* Medium dog paw prints */
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E"),
+    /* Medium floating bubbles with shine effect */
+    radial-gradient(circle at 34% 20%, rgba(135, 206, 250, 0.8) 14px, transparent 16px),
+    radial-gradient(circle at 78% 55%, rgba(100, 149, 237, 0.9) 12px, transparent 14px),
+    radial-gradient(circle at 15% 85%, rgba(173, 216, 230, 0.8) 17px, transparent 19px),
+    radial-gradient(circle at 92% 10%, rgba(135, 206, 250, 0.9) 13px, transparent 15px),
     
-    /* Small dog paw prints */
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E");
+    /* Small floating bubbles with shine effect */
+    radial-gradient(circle at 55% 12%, rgba(100, 149, 237, 0.8) 10px, transparent 12px),
+    radial-gradient(circle at 18% 88%, rgba(173, 216, 230, 0.9) 11px, transparent 13px),
+    
+    /* Shine highlights for floating bubbles */
+    radial-gradient(circle at 10% 12%, rgba(255, 255, 255, 0.7) 4px, transparent 6px),
+    radial-gradient(circle at 65% 22%, rgba(255, 255, 255, 0.6) 3px, transparent 5px),
+    radial-gradient(circle at 21% 42%, rgba(255, 255, 255, 0.7) 5px, transparent 7px),
+    radial-gradient(circle at 83% 32%, rgba(255, 255, 255, 0.6) 3px, transparent 5px),
+    radial-gradient(circle at 43% 62%, rgba(255, 255, 255, 0.7) 4px, transparent 6px),
+    radial-gradient(circle at 6% 72%, rgba(255, 255, 255, 0.6) 5px, transparent 7px),
+    radial-gradient(circle at 32% 17%, rgba(255, 255, 255, 0.7) 3px, transparent 5px),
+    radial-gradient(circle at 76% 52%, rgba(255, 255, 255, 0.6) 2px, transparent 4px),
+    radial-gradient(circle at 13% 82%, rgba(255, 255, 255, 0.7) 4px, transparent 6px),
+    radial-gradient(circle at 90% 7%, rgba(255, 255, 255, 0.6) 3px, transparent 5px),
+    radial-gradient(circle at 53% 9%, rgba(255, 255, 255, 0.7) 2px, transparent 4px),
+    radial-gradient(circle at 16% 85%, rgba(255, 255, 255, 0.6) 3px, transparent 5px);
   
   background-size: 
-    /* Large paw prints - bigger and more visible */
-    40px 40px, 38px 38px, 42px 42px, 41px 41px, 39px 39px, 40px 40px,
-    /* Medium paw prints */
-    32px 32px, 34px 34px, 33px 33px, 31px 31px,
-    /* Small paw prints */
-    24px 24px, 26px 26px;
+    /* Large floating bubbles - bigger and more visible */
+    44px 44px, 40px 40px, 48px 48px, 36px 36px, 42px 42px, 46px 46px,
+    /* Medium floating bubbles */
+    32px 32px, 28px 28px, 38px 38px, 30px 30px,
+    /* Small floating bubbles */
+    24px 24px, 26px 26px,
+    /* Shine highlights */
+    12px 12px, 10px 10px, 14px 14px, 8px 8px, 12px 12px, 16px 16px,
+    8px 8px, 6px 6px, 12px 12px, 8px 8px, 6px 6px, 8px 8px;
   
   background-position:
-    /* Sporadic positioning - like natural dog walking patterns */
+    /* Floating bubble positioning - like bubbles rising in water */
     12% 15%, 67% 25%, 23% 45%, 85% 35%, 45% 65%, 8% 75%,
     34% 20%, 78% 55%, 15% 85%, 92% 10%,
-    55% 12%, 18% 88%;
+    55% 12%, 18% 88%,
+    /* Shine highlight positions */
+    10% 12%, 65% 22%, 21% 42%, 83% 32%, 43% 62%, 6% 72%,
+    32% 17%, 76% 52%, 13% 82%, 90% 7%, 53% 9%, 16% 85%;
   
-  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
   
   /* Add some rotation variety */
   transform: rotate(0deg);
-  animation: subtle-drift 120s ease-in-out infinite alternate;
+  animation: bubble-float 180s ease-in-out infinite alternate;
 }
 
-/* Very subtle animation to make paw prints feel more organic */
-@keyframes subtle-drift {
-  0% { transform: rotate(0deg) scale(1); }
-  25% { transform: rotate(0.5deg) scale(1.01); }
-  50% { transform: rotate(-0.3deg) scale(0.99); }
-  75% { transform: rotate(0.2deg) scale(1.005); }
-  100% { transform: rotate(-0.1deg) scale(1); }
+/* Gentle floating animation to make bubbles feel more organic */
+@keyframes bubble-float {
+  0% { transform: rotate(0deg) scale(1) translateY(0px); }
+  25% { transform: rotate(0.3deg) scale(1.02) translateY(-2px); }
+  50% { transform: rotate(-0.2deg) scale(0.98) translateY(1px); }
+  75% { transform: rotate(0.1deg) scale(1.01) translateY(-1px); }
+  100% { transform: rotate(-0.1deg) scale(1) translateY(0px); }
 }
 
-/* Apply to body with paw prints */
-body.paw-prints {
+/* Apply to body with floating bubbles */
+body.bubble2 {
   position: relative;
 }
 
-/* Media queries for responsive paw print sizes */
+/* Media queries for responsive bubble sizes */
 @media (max-width: 768px) {
-  .paw-prints::after {
+  .bubble2::after {
     background-size: 
-      32px 32px, 30px 30px, 34px 34px, 33px 33px, 31px 31px, 32px 32px,
-      26px 26px, 28px 28px, 27px 27px, 25px 25px,
-      20px 20px, 22px 22px;
+      36px 36px, 32px 32px, 40px 40px, 30px 30px, 36px 36px, 38px 38px,
+      26px 26px, 24px 24px, 32px 32px, 26px 26px,
+      20px 20px, 22px 22px,
+      10px 10px, 8px 8px, 12px 12px, 6px 6px, 10px 10px, 14px 14px,
+      6px 6px, 5px 5px, 10px 10px, 6px 6px, 5px 5px, 6px 6px;
   }
 }
 
 @media (max-width: 480px) {
-  .paw-prints::after {
+  .bubble2::after {
     background-size: 
-      28px 28px, 26px 26px, 30px 30px, 29px 29px, 27px 27px, 28px 28px,
-      22px 22px, 24px 24px, 23px 23px, 21px 21px,
-      18px 18px, 20px 20px;
+      32px 32px, 28px 28px, 36px 36px, 26px 26px, 32px 32px, 34px 34px,
+      22px 22px, 20px 20px, 28px 28px, 24px 24px,
+      18px 18px, 20px 20px,
+      8px 8px, 6px 6px, 10px 10px, 5px 5px, 8px 8px, 12px 12px,
+      5px 5px, 4px 4px, 8px 8px, 5px 5px, 4px 4px, 5px 5px;
   }
 }

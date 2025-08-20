@@ -38,6 +38,7 @@ export default async function RootLayout({
       )}
     >
       <head>
+        <meta name="color-scheme" content="light" />
         <script
           id="theme-init"
           dangerouslySetInnerHTML={{
@@ -65,11 +66,20 @@ export default async function RootLayout({
                     root.setAttribute('data-' + key, value);
                   });
                   
-                  // Apply the theme strictly from config
-                  root.setAttribute('data-theme', ${JSON.stringify(style.theme)});
+                  // Apply the theme strictly from config - FORCE LIGHT THEME
+                  root.setAttribute('data-theme', 'light');
+                  
+                  // Prevent system dark mode from overriding our theme
+                  if (window.matchMedia) {
+                    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+                    if (mediaQuery.matches) {
+                      // Force light theme even if system is in dark mode
+                      root.setAttribute('data-theme', 'light');
+                    }
+                  }
                 } catch (e) {
                   console.error('Failed to initialize theme:', e);
-                  document.documentElement.setAttribute('data-theme', ${JSON.stringify(style.theme)});
+                  document.documentElement.setAttribute('data-theme', 'light');
                 }
               })();
             `,
@@ -77,7 +87,7 @@ export default async function RootLayout({
         />
       </head>
       <Providers>
-        <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center" className="dalmatian-spots paw-prints">
+                  <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center" className="bubble1 bubble2">
           <Background
             position="fixed"
             mask={{

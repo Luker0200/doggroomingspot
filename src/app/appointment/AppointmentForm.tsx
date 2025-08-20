@@ -30,16 +30,39 @@ export default function AppointmentForm() {
 
   const RequiredIndicator = () => <span style={{ color: "var(--critical-strong)" }}>*</span>;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement email sending functionality
-    console.log("Form submitted", {
+  
+    const formData = new FormData(e.currentTarget as HTMLFormElement);
+    const body = {
+      firstName: formData.get("first-name"),
+      lastName: formData.get("last-name"),
+      phone: formData.get("phone-number"),
+      altPhone: formData.get("alternate-phone"),
+      email: formData.get("email"),
+      dogName: formData.get("dog-name"),
+      dogBreed: formData.get("dog-breed"),
+      dogWeight: formData.get("dog-weight"),
+      dogDob: formData.get("dog-dob"),
       mainService,
       additionalServices,
       desiredDate,
       firstAvailable,
-      dogPhoto: dogPhoto?.name
+      comments: formData.get("comments"),
+    };
+  
+    const res = await fetch("/api/quote", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
     });
+  
+    if (res.ok) {
+      alert("Thanks! We’ll contact you within 24 hours.");
+      (e.currentTarget as HTMLFormElement).reset();
+    } else {
+      alert("Error sending form, please try again.");
+    }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {

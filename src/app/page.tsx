@@ -4,9 +4,22 @@ import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row, Sche
 import { home, about, services, appointment, person, newsletter, baseURL, business } from "@/resources";
 import { Mailchimp, RevolvingGallery } from "@/components";
 
+// Add CSS for placeholder styling
+const placeholderStyles = `
+  #preview-name::placeholder,
+  #preview-phone::placeholder,
+  #preview-email::placeholder,
+  #preview-dog-name::placeholder {
+    color: #f5f5f5 !important;
+    opacity: 1 !important;
+  }
+`;
+
 export default function Home() {
   return (
-    <Column maxWidth="m" gap="xl" horizontal="center">
+    <>
+      <style dangerouslySetInnerHTML={{ __html: placeholderStyles }} />
+      <Column maxWidth="m" gap="xl" horizontal="center">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -117,7 +130,7 @@ export default function Home() {
               </Button>
             </Flex>
             
-            <Card background="neutral-alpha-weak" padding="l" style={{ maxWidth: "720px" }}>
+                         <Card background="neutral-weak" padding="l" style={{ maxWidth: "720px", pointerEvents: "none", margin: "0 auto" }}>
               <Flex fillWidth mobileDirection="column" gap="l" vertical="center">
                 <Avatar src={person.avatar} size="xl" />
                 <Column gap="m" flex="1">
@@ -128,14 +141,18 @@ export default function Home() {
                     I graduated from grooming academy where I learned all breed standards, safety, and dog behavior. After recovering from surgery, I'm happy to be back doing what I love with our new mobile service!
                   </Text>
                   <Flex gap="8" horizontal="center" fillWidth marginTop="s">
-                    <Flex gap="8" vertical="center">
+                    <Flex gap="8" vertical="center" style={{ pointerEvents: "auto" }}>
                       <Icon name="email" size="xs" />
-                      <Text variant="body-default-s">{person.email}</Text>
+                      <a href={`mailto:${person.email}`} style={{ color: "inherit", textDecoration: "none" }}>
+                        <Text variant="body-default-s">{person.email}</Text>
+                      </a>
                     </Flex>
                     {person.phone && (
-                      <Flex gap="8" vertical="center">
+                      <Flex gap="8" vertical="center" style={{ pointerEvents: "auto" }}>
                         <Icon name="phone" size="xs" />
-                        <Text variant="body-default-s">{person.phone}</Text>
+                        <a href={`tel:${person.phone.replace(/[^+\\d]/g, "")}`} style={{ color: "inherit", textDecoration: "none" }}>
+                          <Text variant="body-default-s">{person.phone}</Text>
+                        </a>
                       </Flex>
                     )}
                   </Flex>
@@ -173,55 +190,46 @@ export default function Home() {
               Price varies depending on size, breed, coat, condition, type of service, etc.
             </Text>
 
-            <Column gap="l" fillWidth style={{ maxWidth: "600px" }}>
-              {/* Full Groom Preview */}
-              <Column gap="m">
-                <Flex gap="m" vertical="center">
-                  <Heading variant="heading-strong-m">Full Groom</Heading>
-                  <Badge background="neutral-alpha-weak" onBackground="neutral-strong">
-                    <Flex vertical="center" gap="2">
-                      <Icon name="clock" size="xs" />
-                      <Text variant="body-default-xs">1.5-2 hr</Text>
-                    </Flex>
-                  </Badge>
-                </Flex>
-                <Column gap="4" paddingLeft="16">
-                  {["Haircut", "Bath & Blow dry", "Nail trim", "Ear cleaning", "Fragrance", "Decorative Bandana"].map((item, index) => (
-                    <Flex key={index} gap="8" vertical="center">
-                      <Icon name="scissors" size="xs" />
-                      <Text variant="body-default-s">{item}</Text>
-                    </Flex>
-                  ))}
-                  <Text variant="body-default-xs" color="neutral-on-background-weak" style={{ fontStyle: "italic" }}>
-                    Plus a complimentary headshot!
-                  </Text>
-                </Column>
-              </Column>
+                         <div style={{
+               display: "grid",
+               gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+               gap: "24px",
+               width: "100%",
+               maxWidth: "800px",
+               margin: "0 auto"
+             }}>
+               {/* Full Groom Preview */}
+               <Column gap="m">
+                 <Heading variant="heading-strong-m">Full Groom</Heading>
+                 <Column gap="4" paddingLeft="16">
+                   {["Haircut", "Bath & Blow dry", "Nail trim", "Ear cleaning", "Fragrance", "Decorative Bandana"].map((item, index) => (
+                     <Flex key={index} gap="8" vertical="center">
+                       <Icon name="scissors" size="xs" />
+                       <Text variant="body-default-s">{item}</Text>
+                     </Flex>
+                   ))}
+                   <Text variant="body-default-xs" color="neutral-on-background-weak" style={{ fontStyle: "italic" }}>
+                     Plus a complimentary headshot!
+                   </Text>
+                 </Column>
+               </Column>
 
-              {/* Sanitary Groom Preview */}
-              <Column gap="m">
-                <Flex gap="m" vertical="center">
-                  <Heading variant="heading-strong-m">Sanitary Groom</Heading>
-                  <Badge background="neutral-alpha-weak" onBackground="neutral-strong">
-                    <Flex vertical="center" gap="2">
-                      <Icon name="clock" size="xs" />
-                      <Text variant="body-default-xs">45-60 min</Text>
-                    </Flex>
-                  </Badge>
-                </Flex>
-                <Column gap="4" paddingLeft="16">
-                  {["Sanitary trim", "Bath & Blow dry", "Nail trim", "Ear cleaning", "Fragrance", "Decorative Bandana"].map((item, index) => (
-                    <Flex key={index} gap="8" vertical="center">
-                      <Icon name="scissors" size="xs" />
-                      <Text variant="body-default-s">{item}</Text>
-                    </Flex>
-                  ))}
-                  <Text variant="body-default-xs" color="neutral-on-background-weak" style={{ fontStyle: "italic" }}>
-                    Plus a complimentary headshot!
-                  </Text>
-                </Column>
-              </Column>
-            </Column>
+               {/* Sanitary Groom Preview */}
+               <Column gap="m">
+                 <Heading variant="heading-strong-m">Sanitary Groom</Heading>
+                 <Column gap="4" paddingLeft="16">
+                   {["Sanitary trim", "Bath & Blow dry", "Nail trim", "Ear cleaning", "Fragrance", "Decorative Bandana"].map((item, index) => (
+                     <Flex key={index} gap="8" vertical="center">
+                       <Icon name="scissors" size="xs" />
+                       <Text variant="body-default-s">{item}</Text>
+                     </Flex>
+                   ))}
+                   <Text variant="body-default-xs" color="neutral-on-background-weak" style={{ fontStyle: "italic" }}>
+                     Plus a complimentary headshot!
+                   </Text>
+                 </Column>
+               </Column>
+             </div>
           </Column>
         </RevealFx>
       </Column>
@@ -253,7 +261,7 @@ export default function Home() {
               <strong>Quick preview</strong> - fill out the complete form for your appointment request
             </Text>
             
-                         <Card background="neutral-weak" padding="l" style={{ maxWidth: "720px", pointerEvents: "none" }}>
+                         <Card background="neutral-weak" padding="l" style={{ maxWidth: "720px", pointerEvents: "none", margin: "0 auto" }}>
               <Column gap="l">
                 {/* Quick Contact Fields */}
                 <Column gap="m">
@@ -263,38 +271,54 @@ export default function Home() {
                     gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
                     gap: "16px"
                   }}>
-                    <Column gap="4">
-                      <Text variant="body-default-s">Name</Text>
-                                             <Input 
-                         id="preview-name" 
-                         placeholder="Your name" 
-                         disabled 
-                       />
+                                         <Column gap="4">
+                       <Text variant="body-default-s">Name</Text>
+                                              <Input 
+                          id="preview-name" 
+                          placeholder="Your name" 
+                          disabled 
+                          style={{
+                            color: "#000000",
+                            opacity: 1
+                          }}
+                        />
+                      </Column>
+                      <Column gap="4">
+                        <Text variant="body-default-s">Phone</Text>
+                        <Input 
+                          id="preview-phone" 
+                          placeholder="(555) 123-4567" 
+                          disabled 
+                          style={{
+                            color: "#000000",
+                            opacity: 1
+                          }}
+                        />
+                      </Column>
+                      <Column gap="4">
+                        <Text variant="body-default-s">Email</Text>
+                        <Input 
+                          id="preview-email" 
+                          placeholder="your.email@example.com" 
+                          disabled 
+                          style={{
+                            color: "#000000",
+                            opacity: 1
+                          }}
+                        />
+                      </Column>
+                      <Column gap="4">
+                        <Text variant="body-default-s">Dog's Name</Text>
+                        <Input 
+                          id="preview-dog-name" 
+                          placeholder="Buddy" 
+                          disabled 
+                          style={{
+                            color: "#000000",
+                            opacity: 1
+                          }}
+                        />
                      </Column>
-                     <Column gap="4">
-                       <Text variant="body-default-s">Phone</Text>
-                       <Input 
-                         id="preview-phone" 
-                         placeholder="(555) 123-4567" 
-                         disabled 
-                       />
-                     </Column>
-                     <Column gap="4">
-                       <Text variant="body-default-s">Email</Text>
-                       <Input 
-                         id="preview-email" 
-                         placeholder="your.email@example.com" 
-                         disabled 
-                       />
-                     </Column>
-                     <Column gap="4">
-                       <Text variant="body-default-s">Dog's Name</Text>
-                       <Input 
-                         id="preview-dog-name" 
-                         placeholder="Buddy" 
-                         disabled 
-                       />
-                    </Column>
                   </div>
                 </Column>
 
@@ -328,7 +352,8 @@ export default function Home() {
         </RevealFx>
       </Column>
 
-      {newsletter.display && <Mailchimp newsletter={newsletter} />}
-    </Column>
-  );
-}
+             {newsletter.display && <Mailchimp newsletter={newsletter} />}
+     </Column>
+     </>
+   );
+ }

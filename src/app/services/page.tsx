@@ -159,22 +159,7 @@ export default function Services() {
                                padding="s"
                 style={{ height: "100%", minHeight: "300px", maxHeight: "340px", width: "100%", position: "relative", pointerEvents: "none" }}
               >
-                <Badge 
-                  background="neutral-alpha-weak" 
-                  onBackground="neutral-strong" 
-                  style={{ 
-                    padding: "4px 8px", 
-                    position: "absolute", 
-                    top: "-12px", 
-                    right: "12px", 
-                    zIndex: 10 
-                  }}
-                >
-                  <Flex vertical="center" gap="2">
-                    <Icon name="clock" size="xs" />
-                    <Text variant="body-default-xs">{service.duration}</Text>
-                  </Flex>
-                </Badge>
+
                 <Column gap="s" style={{ height: "100%", justifyContent: "space-between" }}>
                   <Heading variant="display-strong-xs" style={{ marginBottom: "0px" }}>
                     {service.title}

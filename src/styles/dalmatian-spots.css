@@ -1,5 +1,5 @@
-/* Dalmatian Spots Background */
-.dalmatian-spots::before {
+/* Bubble Effect Background */
+.bubble1::before {
   content: '';
   position: fixed;
   top: 0;
@@ -8,35 +8,45 @@
   height: 100%;
   pointer-events: none;
   z-index: -1;
-  opacity: 0.08;
+  opacity: 0.5;
   background-image: 
-    /* Large spots */
-    radial-gradient(circle at 15% 25%, black 8px, transparent 9px),
-    radial-gradient(circle at 85% 15%, black 12px, transparent 13px),
-    radial-gradient(circle at 65% 35%, black 10px, transparent 11px),
-    radial-gradient(circle at 25% 65%, black 14px, transparent 15px),
-    radial-gradient(circle at 90% 70%, black 9px, transparent 10px),
-    radial-gradient(circle at 45% 85%, black 11px, transparent 12px),
-    radial-gradient(circle at 5% 80%, black 13px, transparent 14px),
-    radial-gradient(circle at 75% 55%, black 7px, transparent 8px),
+    /* Large bubbles with shine effect */
+    radial-gradient(circle at 15% 25%, rgba(135, 206, 250, 0.8) 8px, transparent 9px),
+    radial-gradient(circle at 85% 15%, rgba(100, 149, 237, 0.7) 12px, transparent 13px),
+    radial-gradient(circle at 65% 35%, rgba(173, 216, 230, 0.8) 10px, transparent 11px),
+    radial-gradient(circle at 25% 65%, rgba(135, 206, 250, 0.7) 14px, transparent 15px),
+    radial-gradient(circle at 90% 70%, rgba(100, 149, 237, 0.8) 9px, transparent 10px),
+    radial-gradient(circle at 45% 85%, rgba(173, 216, 230, 0.7) 11px, transparent 12px),
+    radial-gradient(circle at 5% 80%, rgba(135, 206, 250, 0.8) 13px, transparent 14px),
+    radial-gradient(circle at 75% 55%, rgba(100, 149, 237, 0.7) 7px, transparent 8px),
     
-    /* Medium spots */
-    radial-gradient(circle at 35% 15%, black 6px, transparent 7px),
-    radial-gradient(circle at 55% 25%, black 8px, transparent 9px),
-    radial-gradient(circle at 20% 45%, black 5px, transparent 6px),
-    radial-gradient(circle at 80% 40%, black 7px, transparent 8px),
-    radial-gradient(circle at 60% 75%, black 6px, transparent 7px),
-    radial-gradient(circle at 10% 60%, black 9px, transparent 10px),
-    radial-gradient(circle at 95% 90%, black 5px, transparent 6px),
-    radial-gradient(circle at 40% 95%, black 8px, transparent 9px),
+    /* Medium bubbles with shine effect */
+    radial-gradient(circle at 35% 15%, rgba(173, 216, 230, 0.8) 6px, transparent 7px),
+    radial-gradient(circle at 55% 25%, rgba(135, 206, 250, 0.7) 8px, transparent 9px),
+    radial-gradient(circle at 20% 45%, rgba(100, 149, 237, 0.8) 5px, transparent 6px),
+    radial-gradient(circle at 80% 40%, rgba(173, 216, 230, 0.7) 7px, transparent 8px),
+    radial-gradient(circle at 60% 75%, rgba(135, 206, 250, 0.8) 6px, transparent 7px),
+    radial-gradient(circle at 10% 60%, rgba(100, 149, 237, 0.7) 9px, transparent 10px),
+    radial-gradient(circle at 95% 90%, rgba(173, 216, 230, 0.8) 5px, transparent 6px),
+    radial-gradient(circle at 40% 95%, rgba(135, 206, 250, 0.7) 8px, transparent 9px),
     
-    /* Small spots */
-    radial-gradient(circle at 70% 10%, black 4px, transparent 5px),
-    radial-gradient(circle at 30% 30%, black 3px, transparent 4px),
-    radial-gradient(circle at 50% 50%, black 4px, transparent 5px),
-    radial-gradient(circle at 85% 85%, black 3px, transparent 4px),
-    radial-gradient(circle at 15% 90%, black 5px, transparent 6px),
-    radial-gradient(circle at 90% 25%, black 4px, transparent 5px);
+    /* Small bubbles with shine effect */
+    radial-gradient(circle at 70% 10%, rgba(100, 149, 237, 0.8) 4px, transparent 5px),
+    radial-gradient(circle at 30% 30%, rgba(173, 216, 230, 0.7) 3px, transparent 4px),
+    radial-gradient(circle at 50% 50%, rgba(135, 206, 250, 0.8) 4px, transparent 5px),
+    radial-gradient(circle at 85% 85%, rgba(100, 149, 237, 0.7) 3px, transparent 4px),
+    radial-gradient(circle at 15% 90%, rgba(173, 216, 230, 0.8) 5px, transparent 6px),
+    radial-gradient(circle at 90% 25%, rgba(135, 206, 250, 0.7) 4px, transparent 5px),
+    
+    /* Shine highlights for bubbles */
+    radial-gradient(circle at 12% 22%, rgba(255, 255, 255, 0.6) 2px, transparent 3px),
+    radial-gradient(circle at 82% 12%, rgba(255, 255, 255, 0.5) 3px, transparent 4px),
+    radial-gradient(circle at 62% 32%, rgba(255, 255, 255, 0.6) 2px, transparent 3px),
+    radial-gradient(circle at 22% 62%, rgba(255, 255, 255, 0.5) 3px, transparent 4px),
+    radial-gradient(circle at 87% 67%, rgba(255, 255, 255, 0.6) 2px, transparent 3px),
+    radial-gradient(circle at 42% 82%, rgba(255, 255, 255, 0.5) 2px, transparent 3px),
+    radial-gradient(circle at 2% 77%, rgba(255, 255, 255, 0.6) 3px, transparent 4px),
+    radial-gradient(circle at 72% 52%, rgba(255, 255, 255, 0.5) 1px, transparent 2px);
   
   background-size: 
     400px 400px, 500px 500px, 350px 350px, 450px 450px,
@@ -56,6 +66,28 @@
 }
 
 /* Apply to body */
-body.dalmatian-spots {
+body.bubble1 {
   position: relative;
+}
+
+/* FORCE LIGHT THEME - Override any system dark mode preferences */
+html[data-theme="dark"],
+html[data-theme="system"] {
+  --data-theme: light !important;
+}
+
+/* Ensure light theme is always applied regardless of system preference */
+html {
+  color-scheme: light !important;
+}
+
+/* Override any dark mode media queries */
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: light !important;
+  }
+  
+  html[data-theme] {
+    --data-theme: light !important;
+  }
 }
