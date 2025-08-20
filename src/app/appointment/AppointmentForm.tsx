@@ -1,24 +1,31 @@
 "use client";
 
-import { Column, Card, Heading, Text, Flex, Button, Input } from "@once-ui-system/core";
+import { Column, Card, Heading, Text, Flex, Button, Input, Checkbox } from "@once-ui-system/core";
 import { useState } from "react";
 import styles from "./AppointmentForm.module.scss";
 
 export default function AppointmentForm() {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const [dogPhoto, setDogPhoto] = useState<File | null>(null);
+  const [mainService, setMainService] = useState<string>("");
+  const [additionalServices, setAdditionalServices] = useState<string[]>([]);
+  const [desiredDate, setDesiredDate] = useState<string>("");
+  const [firstAvailable, setFirstAvailable] = useState<boolean>(false);
 
-  const groomingServices = [
-    { value: "full-grooming", label: "Full Grooming Service" },
-    { value: "bath-tidy", label: "Bath & Tidy" },
-    { value: "nail-trim", label: "Nail Trim & File" },
-    { value: "ear-cleaning", label: "Ear Cleaning" },
-    { value: "puppy-first", label: "Puppy First Groom" },
-    { value: "senior-care", label: "Senior Dog Care" },
-    { value: "de-shedding", label: "De-shedding Treatment" },
-    { value: "flea-tick", label: "Flea & Tick Treatment" },
+  const mainServices = [
+    { value: "full-groom", label: "Full Groom" },
+    { value: "sanitary-groom", label: "Sanitary Groom" }
+  ];
+
+  const additionalServicesList = [
     { value: "teeth-brushing", label: "Teeth Brushing" },
-    { value: "anal-gland", label: "Anal Gland Expression" },
-    { value: "custom", label: "Custom Service" }
+    { value: "nail-filing", label: "Nail Filing" },
+    { value: "paw-nose-balm", label: "Paw & Nose Balm" },
+    { value: "medicated-bath", label: "Medicated Bath" },
+    { value: "anal-gland-expression", label: "Anal Gland Expression" },
+    { value: "de-shedding", label: "De-shedding" },
+    { value: "de-skunk-bath", label: "De-skunk Bath Treatment" },
+    { value: "flea-tick-treatment", label: "Flea & Tick Treatment" }
   ];
 
   const RequiredIndicator = () => <span style={{ color: "var(--critical-strong)" }}>*</span>;
@@ -26,7 +33,13 @@ export default function AppointmentForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // TODO: Implement email sending functionality
-    console.log("Form submitted");
+    console.log("Form submitted", {
+      mainService,
+      additionalServices,
+      desiredDate,
+      firstAvailable,
+      dogPhoto: dogPhoto?.name
+    });
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,6 +50,35 @@ export default function AppointmentForm() {
 
   const removeFile = (index: number) => {
     setSelectedFiles(selectedFiles.filter((_, i) => i !== index));
+  };
+
+  const handleDogPhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setDogPhoto(e.target.files[0]);
+    }
+  };
+
+  const removeDogPhoto = () => {
+    setDogPhoto(null);
+  };
+
+  const handleMainServiceChange = (value: string) => {
+    setMainService(value);
+  };
+
+  const handleAdditionalServiceChange = (value: string, checked: boolean) => {
+    if (checked) {
+      setAdditionalServices([...additionalServices, value]);
+    } else {
+      setAdditionalServices(additionalServices.filter(service => service !== value));
+    }
+  };
+
+  const handleFirstAvailableChange = (checked: boolean) => {
+    setFirstAvailable(checked);
+    if (checked) {
+      setDesiredDate("");
+    }
   };
 
   return (
@@ -156,6 +198,81 @@ export default function AppointmentForm() {
                 />
               </div>
             </div>
+
+            {/* Dog Photo Upload */}
+            <Column gap="m" fillWidth>
+              <Text variant="body-strong-s">Dog Photo (Optional)</Text>
+              <Text variant="body-default-s" color="neutral-on-background-weak" marginBottom="s">
+                Upload a photo of your dog to help us prepare for the grooming session
+              </Text>
+              
+              <div
+                style={{
+                  border: "2px dashed var(--neutral-alpha-medium)",
+                  borderRadius: "8px",
+                  padding: "24px",
+                  textAlign: "center",
+                  backgroundColor: "var(--neutral-alpha-weak)",
+                  transition: "border-color 0.2s ease",
+                  cursor: "pointer",
+                }}
+                onDragOver={(e) => {
+                  e.preventDefault();
+                  e.currentTarget.style.borderColor = "var(--brand-strong)";
+                }}
+                onDragLeave={(e) => {
+                  e.preventDefault();
+                  e.currentTarget.style.borderColor = "var(--neutral-alpha-medium)";
+                }}
+                onDrop={(e) => {
+                  e.preventDefault();
+                  e.currentTarget.style.borderColor = "var(--neutral-alpha-medium)";
+                  const files = Array.from(e.dataTransfer.files);
+                  if (files.length > 0) {
+                    setDogPhoto(files[0]);
+                  }
+                }}
+                onClick={() => document.getElementById('dog-photo-upload')?.click()}
+              >
+                <input
+                  id="dog-photo-upload"
+                  type="file"
+                  accept=".jpg,.jpeg,.png"
+                  onChange={handleDogPhotoChange}
+                  style={{ display: "none" }}
+                />
+                <Text variant="body-default-s" color="neutral-on-background-weak">
+                  Insert a photo here:
+                </Text>
+                <br />
+                <Text variant="body-default-xs" color="neutral-on-background-weak">
+                  Accepted formats: JPG, PNG
+                </Text>
+              </div>
+
+              {/* Selected Dog Photo */}
+              {dogPhoto && (
+                <Column gap="s">
+                  <Text variant="body-strong-s">Selected Dog Photo:</Text>
+                  <Flex horizontal="space-between" vertical="center" 
+                        style={{
+                          padding: "8px 12px",
+                          backgroundColor: "var(--neutral-alpha-weak)",
+                          borderRadius: "4px",
+                          border: "1px solid var(--neutral-alpha-medium)"
+                        }}>
+                    <Text variant="body-default-s">{dogPhoto.name}</Text>
+                    <Button
+                      variant="secondary"
+                      size="s"
+                      onClick={removeDogPhoto}
+                    >
+                      Remove
+                    </Button>
+                  </Flex>
+                </Column>
+              )}
+            </Column>
           </Column>
 
           {/* Service Selection */}
@@ -163,36 +280,82 @@ export default function AppointmentForm() {
             <Heading variant="display-strong-s" style={{ textAlign: "center" }}>
               Service Details
             </Heading>
-            <div className={styles.autoFit}>
-              <div className={styles.fieldWrapper}>
-                <Text variant="body-default-s">Requested Service <RequiredIndicator /></Text>
-                <select
-                  id="requested-service"
-                  required
-                  defaultValue=""
-                  className={styles.select}
-                >
-                  <option value="" disabled>
-                    Select a service
-                  </option>
-                  {groomingServices.map((s) => (
-                    <option key={s.value} value={s.value}>
-                      {s.label}
-                    </option>
-                  ))}
-                </select>
+            
+            {/* Main Service Selection */}
+            <Column gap="m" fillWidth>
+              <Text variant="body-strong-s">Main Service <RequiredIndicator /></Text>
+              <div className={styles.autoFit}>
+                {mainServices.map((service) => (
+                  <div key={service.value} className={styles.fieldWrapper}>
+                    <label style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer" }}>
+                      <input
+                        type="radio"
+                        name="main-service"
+                        value={service.value}
+                        checked={mainService === service.value}
+                        onChange={(e) => handleMainServiceChange(e.target.value)}
+                        required
+                        style={{ width: "16px", height: "16px" }}
+                      />
+                      <Text variant="body-default-s">{service.label}</Text>
+                    </label>
+                  </div>
+                ))}
               </div>
-              <div className={styles.fieldWrapper}>
-                <Text variant="body-default-s">Desired Date <RequiredIndicator /></Text>
-                <input
-                  id="desired-date"
-                  type="text"
-                  placeholder="MM/DD/YYYY (or 'First Available')"
-                  required
-                  className={styles.textInput}
-                />
+            </Column>
+
+            {/* Additional Services Selection */}
+            <Column gap="m" fillWidth>
+              <Text variant="body-strong-s">Additional Services (Optional)</Text>
+              <div className={styles.autoFit}>
+                {additionalServicesList.map((service) => (
+                  <div key={service.value} className={styles.fieldWrapper}>
+                    <label style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer" }}>
+                      <input
+                        type="checkbox"
+                        value={service.value}
+                        checked={additionalServices.includes(service.value)}
+                        onChange={(e) => handleAdditionalServiceChange(service.value, e.target.checked)}
+                        style={{ width: "16px", height: "16px" }}
+                      />
+                      <Text variant="body-default-s">{service.label}</Text>
+                    </label>
+                  </div>
+                ))}
               </div>
-            </div>
+            </Column>
+
+            {/* Date Selection */}
+            <Column gap="m" fillWidth>
+              <Text variant="body-strong-s">Desired Date <RequiredIndicator /></Text>
+              <div className={styles.autoFit}>
+                <div className={styles.fieldWrapper}>
+                  <Input
+                    id="desired-date"
+                    type="date"
+                    value={desiredDate}
+                    onChange={(e) => setDesiredDate(e.target.value)}
+                    disabled={firstAvailable}
+                    required={!firstAvailable}
+                    style={{ 
+                      opacity: firstAvailable ? 0.5 : 1,
+                      backgroundColor: firstAvailable ? "var(--neutral-alpha-weak)" : "var(--neutral-on-background)"
+                    }}
+                  />
+                </div>
+                <div className={styles.fieldWrapper}>
+                  <label style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer" }}>
+                    <input
+                      type="checkbox"
+                      checked={firstAvailable}
+                      onChange={(e) => handleFirstAvailableChange(e.target.checked)}
+                      style={{ width: "16px", height: "16px" }}
+                    />
+                    <Text variant="body-default-s">First Available</Text>
+                  </label>
+                </div>
+              </div>
+            </Column>
           </Column>
 
           {/* File Upload */}
@@ -243,7 +406,8 @@ export default function AppointmentForm() {
               <Text variant="body-default-s" color="neutral-on-background-weak">
                 Drop files here or click to select
               </Text>
-              <Text variant="body-default-xs" color="neutral-on-background-weak" marginTop="s">
+              <br />
+              <Text variant="body-default-xs" color="neutral-on-background-weak">
                 Accepted formats: PDF, JPG, PNG, DOC, DOCX
               </Text>
             </div>

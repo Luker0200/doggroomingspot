@@ -12,7 +12,7 @@ import {
   Meta,
   Schema
 } from "@once-ui-system/core";
-import { baseURL, about, person, business, social } from "@/resources";
+import { baseURL, about, person, business, social, appointment } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
@@ -42,7 +42,7 @@ export default function About() {
     {
       title: about.employee.title,
       display: about.employee.display,
-      items: about.employee.institutions.map((institution) => institution.name),
+      items: [],
     },
     {
       title: about.technical.title,
@@ -124,7 +124,7 @@ export default function About() {
                  Press Here to Get in Touch!
                </Button>
              )}
-            <Heading className={styles.textAlign} variant="display-strong-xl">
+            <Heading className={styles.textAlign} variant="display-strong-xl" wrap="nowrap">
               {business.name}
             </Heading>
             <Text
@@ -134,6 +134,32 @@ export default function About() {
             >
               {person.role}
             </Text>
+            <Flex fillWidth horizontal="start" paddingTop="l" paddingBottom="m">
+              <Flex className="s-flex-hide" horizontal="start">
+                <Button
+                  href={appointment.path}
+                  variant="primary"
+                  size="m"
+                  weight="default"
+                  data-border="rounded"
+                  arrowIcon
+                >
+                  Click here to fill out our appointment form!
+                </Button>
+              </Flex>
+              <Flex className="s-flex-show" fillWidth horizontal="center">
+                <Button
+                  href={appointment.path}
+                  variant="primary"
+                  size="m"
+                  weight="default"
+                  data-border="rounded"
+                  arrowIcon
+                >
+                  Click here to fill out our appointment form!
+                </Button>
+              </Flex>
+            </Flex>
             {social.length > 0 && (
               <Column gap="12" horizontal="start">
                 <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="start" fitWidth data-border="rounded">
@@ -163,7 +189,7 @@ export default function About() {
                       ),
                   )}
                 </Flex>
-                <Flex gap="16" vertical="center">
+                <Column gap="8" fillWidth horizontal="start">
                   <Flex gap="8" vertical="center">
                     <Icon name="email" size="xs" />
                     <a href={`mailto:${person.email}`} style={{ color: "inherit", textDecoration: "none" }}>
@@ -178,7 +204,7 @@ export default function About() {
                       </a>
                     </Flex>
                   )}
-                </Flex>
+                </Column>
               </Column>
             )}
           </Column>
@@ -259,18 +285,7 @@ export default function About() {
               <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
                 {about.employee.description}
               </Column>
-              <Column fillWidth gap="l" marginBottom="40">
-                {about.employee.institutions.map((institution, index) => (
-                  <Column key={`${institution.name}-${index}`} fillWidth gap="4">
-                    <Text id={institution.name} variant="heading-strong-l">
-                      {institution.name}
-                    </Text>
-                    <Text variant="heading-default-xs" onBackground="neutral-weak">
-                      {institution.description}
-                    </Text>
-                  </Column>
-                ))}
-              </Column>
+
             </>
           )}
 
@@ -291,6 +306,20 @@ export default function About() {
                     <Text variant="body-default-m" onBackground="neutral-weak">
                       {skill.description}
                     </Text>
+                    {index === 0 && (
+                      <Flex fillWidth horizontal="center" paddingTop="m">
+                        <Button
+                          href={appointment.path}
+                          variant="primary"
+                          size="m"
+                          weight="default"
+                          data-border="rounded"
+                          arrowIcon
+                        >
+                          Request Quote
+                        </Button>
+                      </Flex>
+                    )}
                     {skill.images && skill.images.length > 0 && (
                       <Flex fillWidth paddingTop="m" gap="12" wrap>
                         {skill.images.map((image, index) => (

@@ -3,10 +3,9 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { Fade, Flex, Line, ToggleButton } from "@once-ui-system/core";
+import { Fade, Flex, Line, ToggleButton, Text } from "@once-ui-system/core";
 
 import { routes, display, person, about, appointment, services, gallery } from "@/resources";
-import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Header.module.scss";
 
 type TimeDisplayProps = {
@@ -45,10 +44,69 @@ export default TimeDisplay;
 export const Header = () => {
   const pathname = usePathname() ?? "";
 
+  // Get current page title for mobile indicator
+  const getCurrentPageTitle = () => {
+    if (pathname === "/") return "Home";
+    if (pathname === "/about") return about.label;
+    if (pathname.startsWith("/services")) return services.label;
+    if (pathname.startsWith("/appointment")) return appointment.label;
+    if (pathname.startsWith("/gallery")) return gallery.label;
+    return "Home";
+  };
+
   return (
     <>
       <Fade hide="s" fillWidth position="fixed" height="80" zIndex={9} />
       <Fade show="s" fillWidth position="fixed" bottom="0" to="top" height="80" zIndex={9} />
+      
+      {/* Mobile floating logo */}
+      <a 
+        href="/" 
+        className="s-flex-show"
+        style={{ 
+          textDecoration: 'none',
+          display: 'flex',
+          alignItems: 'center',
+          position: 'fixed',
+          left: '0px',
+          top: '0px',
+          zIndex: 10
+        }}
+      >
+        <img 
+          src="/vectors/groomingspot-dog-logo.svg" 
+          alt="Grooming Spot Logo" 
+          style={{ 
+            height: '32px', 
+            width: 'auto',
+            filter: 'var(--logo-filter, none)' // This will adapt to theme
+          }} 
+        />
+      </a>
+      
+      {/* Mobile page indicator */}
+      <Flex
+        show="s"
+        position="fixed"
+        top="0"
+        fillWidth
+        horizontal="center"
+        zIndex={9}
+        style={{ pointerEvents: "none" }}
+      >
+        <Flex
+          background="page"
+          border="neutral-alpha-weak"
+          radius="xs"
+          shadow="l"
+          padding="8"
+          paddingX="12"
+        >
+          <Text variant="body-default-xs" onBackground="neutral-medium">
+            {getCurrentPageTitle()}
+          </Text>
+        </Flex>
+      </Flex>
       <Flex
         fitHeight
         position="unset"
@@ -61,9 +119,10 @@ export const Header = () => {
         data-border="rounded"
       >
         <Flex paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
-          {/* Logo */}
+          {/* Logo - Desktop version */}
           <a 
             href="/" 
+            className="s-flex-hide"
             style={{ 
               textDecoration: 'none',
               display: 'flex',
@@ -96,86 +155,102 @@ export const Header = () => {
             padding="4"
             horizontal="center"
             zIndex={1}
+            className={styles.navContainer}
           >
             <Flex gap="4" vertical="center" textVariant="body-default-s" suppressHydrationWarning>
               {routes["/"] && (
-                <ToggleButton prefixIcon="home" href="/" selected={pathname === "/"} />
+                <ToggleButton 
+                  prefixIcon="home" 
+                  href="/" 
+                  selected={pathname === "/"}
+                  className={`${styles["navButton"]} ${styles["mobile-nav-icon"]}`}
+                  style={{
+                    fontSize: "1.2rem",
+                  }}
+                />
               )}
               <Line background="neutral-alpha-medium" vert maxHeight="24" />
               {routes["/about"] && (
                 <>
                   <ToggleButton
-                    className="s-flex-hide"
+                    className={`${styles["navButton"]} s-flex-hide`}
                     prefixIcon="person"
                     href="/about"
                     label={about.label}
                     selected={pathname === "/about"}
                   />
                   <ToggleButton
-                    className="s-flex-show"
+                    className={`${styles["navButton"]} s-flex-show ${styles["mobile-nav-icon"]}`}
                     prefixIcon="person"
                     href="/about"
                     selected={pathname === "/about"}
+                    style={{
+                      fontSize: "1.2rem",
+                    }}
                   />
                 </>
               )}
               {routes["/services"] && (
                 <>
                   <ToggleButton
-                    className="s-flex-hide"
+                    className={`${styles["navButton"]} s-flex-hide`}
                     prefixIcon="scissors"
                     href="/services"
                     label={services.label}
                     selected={pathname.startsWith("/services")}
                   />
                   <ToggleButton
-                    className="s-flex-show"
+                    className={`${styles["navButton"]} s-flex-show ${styles["mobile-nav-icon"]}`}
                     prefixIcon="scissors"
                     href="/services"
                     selected={pathname.startsWith("/services")}
+                    style={{
+                      fontSize: "1.2rem",
+                    }}
                   />
                 </>
               )}
               {routes["/appointment"] && (
                 <>
                   <ToggleButton
-                    className="s-flex-hide"
+                    className={`${styles["navButton"]} s-flex-hide`}
                     prefixIcon="calendar"
                     href="/appointment"
                     label={appointment.label}
                     selected={pathname.startsWith("/appointment")}
                   />
                   <ToggleButton
-                    className="s-flex-show"
+                    className={`${styles["navButton"]} s-flex-show ${styles["mobile-nav-icon"]}`}
                     prefixIcon="calendar"
                     href="/appointment"
                     selected={pathname.startsWith("/appointment")}
+                    style={{
+                      fontSize: "1.2rem",
+                    }}
                   />
                 </>
               )}
               {routes["/gallery"] && (
                 <>
                   <ToggleButton
-                    className="s-flex-hide"
+                    className={`${styles["navButton"]} s-flex-hide`}
                     prefixIcon="gallery"
                     href="/gallery"
                     label={gallery.label}
                     selected={pathname.startsWith("/gallery")}
                   />
                   <ToggleButton
-                    className="s-flex-show"
+                    className={`${styles["navButton"]} s-flex-show ${styles["mobile-nav-icon"]}`}
                     prefixIcon="gallery"
                     href="/gallery"
                     selected={pathname.startsWith("/gallery")}
+                    style={{
+                      fontSize: "1.2rem",
+                    }}
                   />
                 </>
               )}
-              {display.themeSwitcher && (
-                <>
-                  <Line background="neutral-alpha-medium" vert maxHeight="24" />
-                  <ThemeToggle />
-                </>
-              )}
+              
             </Flex>
           </Flex>
         </Flex>

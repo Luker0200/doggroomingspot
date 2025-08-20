@@ -1,0 +1,61 @@
+/* Dalmatian Spots Background */
+.dalmatian-spots::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.08;
+  background-image: 
+    /* Large spots */
+    radial-gradient(circle at 15% 25%, black 8px, transparent 9px),
+    radial-gradient(circle at 85% 15%, black 12px, transparent 13px),
+    radial-gradient(circle at 65% 35%, black 10px, transparent 11px),
+    radial-gradient(circle at 25% 65%, black 14px, transparent 15px),
+    radial-gradient(circle at 90% 70%, black 9px, transparent 10px),
+    radial-gradient(circle at 45% 85%, black 11px, transparent 12px),
+    radial-gradient(circle at 5% 80%, black 13px, transparent 14px),
+    radial-gradient(circle at 75% 55%, black 7px, transparent 8px),
+    
+    /* Medium spots */
+    radial-gradient(circle at 35% 15%, black 6px, transparent 7px),
+    radial-gradient(circle at 55% 25%, black 8px, transparent 9px),
+    radial-gradient(circle at 20% 45%, black 5px, transparent 6px),
+    radial-gradient(circle at 80% 40%, black 7px, transparent 8px),
+    radial-gradient(circle at 60% 75%, black 6px, transparent 7px),
+    radial-gradient(circle at 10% 60%, black 9px, transparent 10px),
+    radial-gradient(circle at 95% 90%, black 5px, transparent 6px),
+    radial-gradient(circle at 40% 95%, black 8px, transparent 9px),
+    
+    /* Small spots */
+    radial-gradient(circle at 70% 10%, black 4px, transparent 5px),
+    radial-gradient(circle at 30% 30%, black 3px, transparent 4px),
+    radial-gradient(circle at 50% 50%, black 4px, transparent 5px),
+    radial-gradient(circle at 85% 85%, black 3px, transparent 4px),
+    radial-gradient(circle at 15% 90%, black 5px, transparent 6px),
+    radial-gradient(circle at 90% 25%, black 4px, transparent 5px);
+  
+  background-size: 
+    400px 400px, 500px 500px, 350px 350px, 450px 450px,
+    300px 300px, 400px 400px, 380px 380px, 320px 320px,
+    250px 250px, 280px 280px, 220px 220px, 300px 300px,
+    260px 260px, 290px 290px, 240px 240px, 310px 310px,
+    180px 180px, 200px 200px, 190px 190px, 210px 210px,
+    170px 170px, 195px 195px;
+  
+  background-position:
+    0% 0%, 100% 0%, 50% 20%, 0% 50%,
+    80% 30%, 20% 70%, 60% 90%, 40% 40%,
+    10% 10%, 90% 60%, 30% 80%, 70% 20%,
+    50% 60%, 20% 20%, 80% 80%, 60% 40%,
+    40% 10%, 10% 70%, 70% 70%, 90% 40%,
+    30% 50%, 80% 10%;
+}
+
+/* Apply to body */
+body.dalmatian-spots {
+  position: relative;
+}

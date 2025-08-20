@@ -28,6 +28,8 @@ import {
   PiPaintBrushDuotone,
   PiFlowerDuotone,
   PiPawPrintDuotone,
+  PiEarDuotone,
+  PiBoneDuotone,
 } from "react-icons/pi";
 
 import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads, FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa6";
@@ -52,6 +54,8 @@ export const iconLibrary: Record<string, IconType> = {
   brush: PiPaintBrushDuotone,
   flower: PiFlowerDuotone,
   pawprint: PiPawPrintDuotone,
+  ear: PiEarDuotone,
+  bowtie: PiBoneDuotone,
   discord: FaDiscord,
   eye: HiOutlineEye,
   eyeOff: HiOutlineEyeSlash,

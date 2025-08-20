@@ -53,28 +53,24 @@ const home = {
   label: "Home",
   title: `The Grooming Spot`,
   description: ``,
-  headline: <>The Grooming Spot - At Your Spot</>,
+  headline: <>The Grooming Spot<br />@ Your Spot</>,
   featured: {
     display: false,
     title: <>Recent Grooming: <strong className="ml-4">Poodle</strong></>,
     href: "",
   },
-  subline: (
-    <>
-      Servicing Magnolia, Woodlands, Tomball, Waller, Hockley, Pinehurst, and surrounding areas.
-      <ul style={{ marginTop: '1rem', marginBottom: '1rem', paddingLeft: '2rem' }}>
-        <li>Convenience</li>
-        <li>Cage-free Grooming</li>
-        <li>One on one experiences</li>
-        <li>All breeds welcome</li>
-        <li>Certified, Insured, and Experienced</li>
-      </ul>
-    </>
-  ),
+  subline: "Servicing Magnolia, Woodlands, Tomball, Waller, Hockley, Pinehurst, Todd Mission, Plantersville, and surrounding areas.",
+  features: [
+    "Convenience",
+    "Cage-free Grooming",
+    "One on one experiences",
+    "All breeds welcome",
+    "Certified & Experienced!"
+  ],
   buttons: {
     about: "About Us",
     services: "Rates & Services",
-    appointment: "Book Appointment",
+    appointment: "Request a Quote",
   },
 };
 
@@ -136,7 +132,6 @@ const about = {
     title: "Meet Your Dog Groomer",
     description: (
       <>
-        <h3>Charlene Luke, Owner</h3>
         <p>
           Hi! My name is Charlene. I have been grooming since 2010. I grew up with dogs and cats. I love all animals and have had horses, goats, chickens, rabbits, lizards, and frogs as pets. 🐾
         </p>
@@ -154,45 +149,23 @@ const about = {
         </p>
       </>
     ),
-    institutions: [
-      {
-        name: "Studied at Dog Grooming & Boarding School",
-        description: <>Dog grooming and animal behavior.</>,
-      },
-      {
-        name: "and Sam Houston State University",
-        description: <>Psychology and Sociology.</>,
-      },
-      
-    ],
+    institutions: [],
   },
   technical: {
     display: true, // set to false to hide this section
     title: "How We Operate",
     skills: [
       {
-        title: "Scheduling",
-        description: <>I offer availability through the "software name" service that allows you to schedule appointments without contacting me.
-        However, times listed on this service are limited. You may contact me directly through email or phone to schedule an appointment a more personal timeframe.</>,
+        title: "Requesting a Quote and Appointments",
+        description: <>People request quotes by filling out a form with their dog's breed, contact information, hair type, vaccination records, and other relevant details. 
+        Once submitted, I will contact you directly to discuss your needs and schedule an appointment at a time that works best for both of us.</>,
         // optional: leave the array empty if you don't want to display images
         images: [
-          {
-            src: "/images/appointmentphoto1AI.png",
-            alt: "schedule appointment",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/appointmentphoto2AI.png",
-            alt: "schedule appointment",
-            width: 16,
-            height: 9,
-          },
         ],
       },
       {
-        title: "The Grooming Spot at Your Spot",
-        description: <>With a mobile grooming trailer, I bring my shop directly to your home.</>,
+        title: "The Grooming Spot @ Your Spot",
+        description: <>Our mobile grooming trailer is equipped with all the necessary tools and supplies to groom your dog without the need to travel.</>,
         // optional: leave the array empty if you don't want to display images
         images: [
           {

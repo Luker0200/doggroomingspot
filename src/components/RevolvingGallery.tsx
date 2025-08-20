@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Flex, Text, Media } from "@once-ui-system/core";
+import { Flex, Text, Media, Button } from "@once-ui-system/core";
 import { gallery } from "@/resources";
 
 export const RevolvingGallery: React.FC = () => {
@@ -51,26 +51,58 @@ export const RevolvingGallery: React.FC = () => {
       fillWidth
       horizontal="center"
       vertical="center"
-      style={{
-        minHeight: "400px",
-        position: "relative",
-        overflow: "hidden",
-        borderRadius: "12px",
-        border: "2px solid #333",
-      }}
+      direction="column"
     >
-      <Media
-        src={currentImage.src}
-        alt={currentImage.alt}
-        aspectRatio={currentImage.orientation === "vertical" ? "3 / 4" : "16 / 9"}
-        radius="m"
+      <Flex
+        fillWidth
+        horizontal="center"
+        vertical="center"
         style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          transition: "opacity 0.5s ease-in-out",
+          minHeight: "400px",
+          position: "relative",
+          overflow: "hidden",
+          borderRadius: "12px",
+          border: "2px solid #333",
         }}
-      />
+      >
+        <Media
+          src={currentImage.src}
+          alt={currentImage.alt}
+          aspectRatio={currentImage.orientation === "vertical" ? "3 / 4" : "16 / 9"}
+          radius="m"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            transition: "opacity 0.5s ease-in-out",
+          }}
+        />
+      </Flex>
+      
+      {/* View Full Gallery Button - positioned like a tag sticking off */}
+      <Flex
+        background="page"
+        border="neutral-alpha-weak"
+        radius="xs"
+        shadow="l"
+        padding="8"
+        paddingX="12"
+        style={{
+          marginTop: "-20px", // Pull it up to overlap with the gallery border
+        }}
+      >
+        <Button
+          href={gallery.path}
+          variant="secondary"
+          size="s"
+          weight="default"
+          arrowIcon
+        >
+          <Text variant="body-default-xs" onBackground="neutral-medium">
+            View Full Gallery
+          </Text>
+        </Button>
+      </Flex>
     </Flex>
   );
 };

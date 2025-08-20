@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row, Schema, Icon } from "@once-ui-system/core";
-import { home, about, services, appointment, person, newsletter, baseURL } from "@/resources";
+import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row, Schema, Icon, Card, Input } from "@once-ui-system/core";
+import { home, about, services, appointment, person, newsletter, baseURL, business } from "@/resources";
 import { Mailchimp, RevolvingGallery } from "@/components";
 
 export default function Home() {
@@ -32,12 +32,12 @@ export default function Home() {
           </RevealFx>
           )}
           <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="16">
-            <Heading wrap="balance" variant="display-strong-l">
+            <Heading wrap="nowrap" variant="display-strong-l">
               {home.headline}
             </Heading>
           </RevealFx>
           <RevealFx translateY="4" delay={0.25} fillWidth horizontal="start" paddingBottom="16">
-            <Flex gap="16" vertical="center">
+            <Column gap="8" fillWidth horizontal="start">
               <Flex gap="8" vertical="center">
                 <Icon name="email" size="xs" />
                 <a href={`mailto:${person.email}`} style={{ color: "inherit", textDecoration: "none" }}>
@@ -52,52 +52,24 @@ export default function Home() {
                   </a>
                 </Flex>
               )}
-            </Flex>
+            </Column>
           </RevealFx>
-          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="32">
+          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="16">
             <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
               {home.subline}
             </Text>
           </RevealFx>
+          <RevealFx translateY="8" delay={0.3} fillWidth horizontal="start" paddingBottom="32">
+            <Column gap="8" paddingLeft="16">
+              {home.features.map((feature, index) => (
+                <Flex key={index} gap="8" vertical="center">
+                  <Text variant="body-default-m" onBackground="neutral-medium">•</Text>
+                  <Text variant="body-default-m" onBackground="neutral-medium">{feature}</Text>
+                </Flex>
+              ))}
+            </Column>
+          </RevealFx>
           <RevealFx paddingTop="12" delay={0.4} horizontal="start" paddingLeft="12">
-            <Button
-              id="about"
-              data-border="rounded"
-              href={about.path}
-              variant="secondary"
-              size="m"
-              weight="default"
-              arrowIcon
-            >
-              <Flex gap="8" vertical="center" paddingRight="4">
-                {about.avatar.display && (
-                  <Avatar
-                    marginRight="8"
-                    style={{ marginLeft: "-0.75rem" }}
-                    src={person.avatar}
-                    size="m"
-                  />
-                )}
-                {home.buttons.about}
-              </Flex>
-            </Button>
-          </RevealFx>
-          <RevealFx paddingTop="8" delay={0.5} horizontal="start" paddingLeft="12">
-            <Button
-              id="services"
-              data-border="rounded"
-              href={services.path}
-              variant="secondary"
-              size="m"
-              weight="default"
-              arrowIcon
-            >
-              <Flex gap="8" vertical="center" paddingRight="4">
-                {home.buttons.services}
-              </Flex>
-            </Button>
-          </RevealFx>
-          <RevealFx paddingTop="8" delay={0.6} horizontal="start" paddingLeft="12">
             <Button
               id="appointment"
               data-border="rounded"
@@ -112,6 +84,7 @@ export default function Home() {
               </Flex>
             </Button>
           </RevealFx>
+
         </Column>
 
         {/* Right Column - Gallery (Desktop) / Below Content (Mobile) */}
@@ -121,6 +94,240 @@ export default function Home() {
           </RevealFx>
         </Flex>
       </Flex>
+      {/* About Us Preview Section */}
+      <Column gap="xl" fillWidth marginTop="xl" id="about-preview">
+        <RevealFx delay={0.8} fillWidth>
+          <Column gap="l" fillWidth horizontal="center">
+            <Flex gap="m" vertical="center">
+              <Heading variant="display-strong-s" style={{ textAlign: "center" }}>
+                Meet Your Dog Groomer
+              </Heading>
+              <Button 
+                href={about.path} 
+                variant="secondary" 
+                size="s" 
+                suffixIcon="chevronRight"
+                style={{
+                  backgroundColor: "rgba(135, 206, 235, 0.8)", // Water blue
+                  borderColor: "rgba(135, 206, 235, 0.9)",
+                  color: "#1a1a1a", // Dark text for contrast
+                }}
+              >
+                Learn More
+              </Button>
+            </Flex>
+            
+            <Card background="neutral-alpha-weak" padding="l" style={{ maxWidth: "720px" }}>
+              <Flex fillWidth mobileDirection="column" gap="l" vertical="center">
+                <Avatar src={person.avatar} size="xl" />
+                <Column gap="m" flex="1">
+                  <Text variant="body-default-m" style={{ textAlign: "center" }}>
+                    Hi! My name is {person.firstName}. I have been grooming since 2010. I love all animals and have experience with dogs, cats, horses, goats, and more! 🐾
+                  </Text>
+                  <Text variant="body-default-s" onBackground="neutral-weak" style={{ textAlign: "center" }}>
+                    I graduated from grooming academy where I learned all breed standards, safety, and dog behavior. After recovering from surgery, I'm happy to be back doing what I love with our new mobile service!
+                  </Text>
+                  <Flex gap="8" horizontal="center" fillWidth marginTop="s">
+                    <Flex gap="8" vertical="center">
+                      <Icon name="email" size="xs" />
+                      <Text variant="body-default-s">{person.email}</Text>
+                    </Flex>
+                    {person.phone && (
+                      <Flex gap="8" vertical="center">
+                        <Icon name="phone" size="xs" />
+                        <Text variant="body-default-s">{person.phone}</Text>
+                      </Flex>
+                    )}
+                  </Flex>
+                </Column>
+              </Flex>
+            </Card>
+          </Column>
+        </RevealFx>
+      </Column>
+
+      {/* Services Preview Section */}
+      <Column gap="xl" fillWidth marginTop="xl" id="services-preview">
+        <RevealFx delay={0.9} fillWidth>
+          <Column gap="l" fillWidth horizontal="center">
+            <Flex gap="m" vertical="center">
+              <Heading variant="display-strong-s" style={{ textAlign: "center" }}>
+                Our Grooming Services
+              </Heading>
+              <Button 
+                href={services.path} 
+                variant="secondary" 
+                size="s" 
+                suffixIcon="chevronRight"
+                style={{
+                  backgroundColor: "rgba(135, 206, 235, 0.8)", // Water blue
+                  borderColor: "rgba(135, 206, 235, 0.9)",
+                  color: "#1a1a1a", // Dark text for contrast
+                }}
+              >
+                View All Services
+              </Button>
+            </Flex>
+            
+            <Text variant="body-default-s" style={{ textAlign: "center", fontStyle: "italic", maxWidth: "600px" }} color="neutral-on-background-weak">
+              Price varies depending on size, breed, coat, condition, type of service, etc.
+            </Text>
+
+            <Column gap="l" fillWidth style={{ maxWidth: "600px" }}>
+              {/* Full Groom Preview */}
+              <Column gap="m">
+                <Flex gap="m" vertical="center">
+                  <Heading variant="heading-strong-m">Full Groom</Heading>
+                  <Badge background="neutral-alpha-weak" onBackground="neutral-strong">
+                    <Flex vertical="center" gap="2">
+                      <Icon name="clock" size="xs" />
+                      <Text variant="body-default-xs">1.5-2 hr</Text>
+                    </Flex>
+                  </Badge>
+                </Flex>
+                <Column gap="4" paddingLeft="16">
+                  {["Haircut", "Bath & Blow dry", "Nail trim", "Ear cleaning", "Fragrance", "Decorative Bandana"].map((item, index) => (
+                    <Flex key={index} gap="8" vertical="center">
+                      <Icon name="scissors" size="xs" />
+                      <Text variant="body-default-s">{item}</Text>
+                    </Flex>
+                  ))}
+                  <Text variant="body-default-xs" color="neutral-on-background-weak" style={{ fontStyle: "italic" }}>
+                    Plus a complimentary headshot!
+                  </Text>
+                </Column>
+              </Column>
+
+              {/* Sanitary Groom Preview */}
+              <Column gap="m">
+                <Flex gap="m" vertical="center">
+                  <Heading variant="heading-strong-m">Sanitary Groom</Heading>
+                  <Badge background="neutral-alpha-weak" onBackground="neutral-strong">
+                    <Flex vertical="center" gap="2">
+                      <Icon name="clock" size="xs" />
+                      <Text variant="body-default-xs">45-60 min</Text>
+                    </Flex>
+                  </Badge>
+                </Flex>
+                <Column gap="4" paddingLeft="16">
+                  {["Sanitary trim", "Bath & Blow dry", "Nail trim", "Ear cleaning", "Fragrance", "Decorative Bandana"].map((item, index) => (
+                    <Flex key={index} gap="8" vertical="center">
+                      <Icon name="scissors" size="xs" />
+                      <Text variant="body-default-s">{item}</Text>
+                    </Flex>
+                  ))}
+                  <Text variant="body-default-xs" color="neutral-on-background-weak" style={{ fontStyle: "italic" }}>
+                    Plus a complimentary headshot!
+                  </Text>
+                </Column>
+              </Column>
+            </Column>
+          </Column>
+        </RevealFx>
+      </Column>
+
+      {/* Appointment Preview Section */}
+      <Column gap="xl" fillWidth marginTop="xl" id="appointment-preview">
+        <RevealFx delay={1.0} fillWidth>
+          <Column gap="l" fillWidth horizontal="center">
+            <Flex gap="m" vertical="center">
+              <Heading variant="display-strong-s" style={{ textAlign: "center" }}>
+                Request an Appointment
+              </Heading>
+              <Button 
+                href={appointment.path} 
+                variant="secondary" 
+                size="s" 
+                suffixIcon="chevronRight"
+                style={{
+                  backgroundColor: "rgba(135, 206, 235, 0.8)", // Water blue
+                  borderColor: "rgba(135, 206, 235, 0.9)",
+                  color: "#1a1a1a", // Dark text for contrast
+                }}
+              >
+                Full Form
+              </Button>
+            </Flex>
+            
+            <Text variant="body-default-m" style={{ textAlign: "center" }} color="neutral-on-background-weak">
+              <strong>Quick preview</strong> - fill out the complete form for your appointment request
+            </Text>
+            
+                         <Card background="neutral-weak" padding="l" style={{ maxWidth: "720px", pointerEvents: "none" }}>
+              <Column gap="l">
+                {/* Quick Contact Fields */}
+                <Column gap="m">
+                  <Heading variant="body-strong-m">Quick Contact Info</Heading>
+                  <div style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+                    gap: "16px"
+                  }}>
+                    <Column gap="4">
+                      <Text variant="body-default-s">Name</Text>
+                                             <Input 
+                         id="preview-name" 
+                         placeholder="Your name" 
+                         disabled 
+                       />
+                     </Column>
+                     <Column gap="4">
+                       <Text variant="body-default-s">Phone</Text>
+                       <Input 
+                         id="preview-phone" 
+                         placeholder="(555) 123-4567" 
+                         disabled 
+                       />
+                     </Column>
+                     <Column gap="4">
+                       <Text variant="body-default-s">Email</Text>
+                       <Input 
+                         id="preview-email" 
+                         placeholder="your.email@example.com" 
+                         disabled 
+                       />
+                     </Column>
+                     <Column gap="4">
+                       <Text variant="body-default-s">Dog's Name</Text>
+                       <Input 
+                         id="preview-dog-name" 
+                         placeholder="Buddy" 
+                         disabled 
+                       />
+                    </Column>
+                  </div>
+                </Column>
+
+                {/* Service Selection Preview */}
+                <Column gap="m">
+                  <Heading variant="body-strong-m">Service Selection</Heading>
+                  <Flex gap="m" wrap>
+                    <Badge background="brand-alpha-weak" padding="8">Full Groom</Badge>
+                    <Badge background="neutral-alpha-weak" padding="8">Sanitary Groom</Badge>
+                    <Badge background="neutral-alpha-weak" padding="8">+ Additional Services</Badge>
+                  </Flex>
+                </Column>
+
+                {/* Service Area */}
+                <Column gap="m">
+                  <Heading variant="body-strong-m">Service Area</Heading>
+                  <Badge background="accent-alpha-weak" onBackground="accent-strong" style={{ textAlign: "center", width: "fit-content" }}>
+                    Magnolia, Woodlands, Tomball, Waller, Hockley, Pinehurst & more!
+                  </Badge>
+                </Column>
+
+                {/* CTA */}
+                <Flex horizontal="center" marginTop="m">
+                  <Button href={appointment.path} variant="primary" size="m" arrowIcon>
+                    Fill Out a Full Form Here!
+                  </Button>
+                </Flex>
+              </Column>
+            </Card>
+          </Column>
+        </RevealFx>
+      </Column>
+
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
     </Column>
   );

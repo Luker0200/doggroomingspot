@@ -31,10 +31,7 @@ export default function Appointment() {
       
       {/* Header Section */}
       <Column gap="l" marginBottom="xl">
-        <Heading variant="display-strong-l" style={{ textAlign: "center" }}>
-          Request a Grooming
-        </Heading>
-        <Text variant="body-default-l" style={{ textAlign: "center" }} color="neutral-on-background-weak">
+        <Text variant="body-default-l" style={{ textAlign: "center" }} color="neutral-on-background-weak" marginTop="xl">
           Fill out the form below to schedule your mobile dog grooming appointment
         </Text>
         <Column horizontal="center" gap="8">
@@ -42,12 +39,12 @@ export default function Appointment() {
             Servicing
           </Text>
           <Flex horizontal="center">
-            <Badge background="accent-alpha-weak" onBackground="accent-strong">
-              Magnolia, Woodlands, Tomball, Waller, Hockley, Pinehurst
+            <Badge background="accent-alpha-weak" onBackground="accent-strong" style={{ textAlign: "center" }}>
+              Magnolia, Woodlands, Tomball, Waller, Hockley, Pinehurst, Todd Mission, and Plantersville
             </Badge>
           </Flex>
           <Text variant="body-default-s" color="neutral-on-background-weak" style={{ textAlign: "center" }}>
-            and surrounding areas!
+            Plus surrounding areas!
           </Text>
         </Column>
       </Column>
@@ -57,16 +54,21 @@ export default function Appointment() {
 
       {/* Information Note */}
       <Card
-        background="accent-alpha-weak"
         padding="l"
         marginTop="l"
-        style={{ textAlign: "center", width: "min(100%, 720px)", marginInline: "auto" }}
+        style={{ 
+          textAlign: "center", 
+          width: "min(100%, 720px)", 
+          marginInline: "auto",
+          backgroundColor: "rgba(220, 38, 38, 0.15)",
+          border: "1px solid rgba(220, 38, 38, 0.2)"
+        }}
       >
         <Column gap="s">
-          <Text variant="body-strong-s" color="accent-on-background">
+          <Text variant="body-strong-s" style={{ color: "#dc2626" }}>
             What happens next?
           </Text>
-          <Text variant="body-default-s" color="accent-on-background-weak">
+          <Text variant="body-default-s" style={{ color: "#991b1b" }}>
             After submitting your request, we'll review your information and contact you within 24 hours to confirm your appointment details and provide a personalized quote.
           </Text>
         </Column>
@@ -92,7 +94,7 @@ export default function Appointment() {
               Email Us
             </Button>
             <Button
-              href={`tel:${person.email}`}
+              href={`tel:${person.phone?.replace(/[^+\\d]/g, "")}`}
               variant="secondary"
               size="s"
             >

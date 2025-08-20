@@ -1,0 +1,83 @@
+/* Sporadic Dog Paw Prints Overlay */
+.paw-prints::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.12;
+  background-image: 
+    /* Large dog paw prints using Phosphor PiPawPrintDuotone */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E"),
+    
+    /* Medium dog paw prints */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E"),
+    
+    /* Small dog paw prints */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23000000'%3E%3Cpath d='M208,110a30,30,0,1,1-30-30A30,30,0,0,1,208,110ZM78,80a30,30,0,1,0,30,30A30,30,0,0,0,78,80Zm50,20a30,30,0,1,0-30,30A30,30,0,0,0,128,100Zm0,56c-22.09,0-40,10.91-40,24,0,17.67,17.91,32,40,32s40-14.33,40-32C168,166.91,150.09,156,128,156Z'/%3E%3C/svg%3E");
+  
+  background-size: 
+    /* Large paw prints - bigger and more visible */
+    40px 40px, 38px 38px, 42px 42px, 41px 41px, 39px 39px, 40px 40px,
+    /* Medium paw prints */
+    32px 32px, 34px 34px, 33px 33px, 31px 31px,
+    /* Small paw prints */
+    24px 24px, 26px 26px;
+  
+  background-position:
+    /* Sporadic positioning - like natural dog walking patterns */
+    12% 15%, 67% 25%, 23% 45%, 85% 35%, 45% 65%, 8% 75%,
+    34% 20%, 78% 55%, 15% 85%, 92% 10%,
+    55% 12%, 18% 88%;
+  
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  
+  /* Add some rotation variety */
+  transform: rotate(0deg);
+  animation: subtle-drift 120s ease-in-out infinite alternate;
+}
+
+/* Very subtle animation to make paw prints feel more organic */
+@keyframes subtle-drift {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(0.5deg) scale(1.01); }
+  50% { transform: rotate(-0.3deg) scale(0.99); }
+  75% { transform: rotate(0.2deg) scale(1.005); }
+  100% { transform: rotate(-0.1deg) scale(1); }
+}
+
+/* Apply to body with paw prints */
+body.paw-prints {
+  position: relative;
+}
+
+/* Media queries for responsive paw print sizes */
+@media (max-width: 768px) {
+  .paw-prints::after {
+    background-size: 
+      32px 32px, 30px 30px, 34px 34px, 33px 33px, 31px 31px, 32px 32px,
+      26px 26px, 28px 28px, 27px 27px, 25px 25px,
+      20px 20px, 22px 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .paw-prints::after {
+    background-size: 
+      28px 28px, 26px 26px, 30px 30px, 29px 29px, 27px 27px, 28px 28px,
+      22px 22px, 24px 24px, 23px 23px, 21px 21px,
+      18px 18px, 20px 20px;
+  }
+}
