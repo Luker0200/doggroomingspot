@@ -29,7 +29,7 @@ export default function Appointment() {
         }}
       />
       
-      {/* Header Section */}
+      {/* Header Setion */}
       <Column gap="l" marginBottom="xl">
         <Text variant="body-default-l" style={{ textAlign: "center" }} color="neutral-on-background-weak" marginTop="xl">
           Fill out the form below to schedule your mobile dog grooming appointment
