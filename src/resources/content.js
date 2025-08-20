@@ -59,7 +59,7 @@ const home = {
     title: <>Recent Grooming: <strong className="ml-4">Poodle</strong></>,
     href: "",
   },
-  subline: "Servicing Magnolia, Woodlands, Tomball, Waller, Hockley, Pinehurst, Todd Mission, Plantersville, and surrounding areas.",
+  subline: "Servicing Magnolia, Waller, Hockley, Pinehurst, Todd Mission, Plantersville, and surrounding areas.",
   features: [
     "Convenience",
     "Cage-free Grooming",

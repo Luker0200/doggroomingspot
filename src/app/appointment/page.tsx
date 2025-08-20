@@ -40,7 +40,7 @@ export default function Appointment() {
           </Text>
           <Flex horizontal="center">
             <Badge background="accent-alpha-weak" onBackground="accent-strong" style={{ textAlign: "center" }}>
-              Magnolia, Woodlands, Tomball, Waller, Hockley, Pinehurst, Todd Mission, and Plantersville
+              Magnolia, Waller, Hockley, Pinehurst, Todd Mission, and Plantersville
             </Badge>
           </Flex>
           <Text variant="body-default-s" color="neutral-on-background-weak" style={{ textAlign: "center" }}>
