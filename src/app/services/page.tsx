@@ -20,13 +20,17 @@ export default function Services() {
   const getServiceIcon = (service: string) => {
     const iconMap: Record<string, string> = {
       "Haircut": "scissors",
+      "Maintenance Trim": "scissors",
       "Bath": "bathtub", 
+      "Bath & Blow dry": "bathtub",
       "Blow dry": "hairDryer",
       "Brush out": "brush",
       "Fragrance": "flower",
       "Nail trim": "pawprint",
       "Ear cleaning and/or plucking": "ear",
+      "Ear cleaning": "ear",
       "Decorative Bandana or Bow": "bowtie",
+      "Decorative Bandana": "bowtie",
       "Trim out of eyes, sanitary area, paw pads": "scissors"
     };
     return iconMap[service] || "scissors";
@@ -37,13 +41,15 @@ export default function Services() {
       title: "Full Groom",
       description: "The Complete Package",
       duration: "1.5-2 hr",
-      includes: ["Haircut", "Bath", "Blow dry", "Brush out", "Nail trim", "Ear cleaning and/or plucking", "Fragrance", "Decorative Bandana or Bow"]
+      includes: ["Haircut", "Bath", "Blow dry", "Brush out", "Nail trim", "Ear cleaning and/or plucking", "Fragrance", "Decorative Bandana or Bow"],
+      note: undefined
     },
     {
       title: "Sanitary Groom",
       description: "Clean and Trim",
       duration: "45-60 min",
-      includes: ["Trim out of eyes, sanitary area, paw pads", "Bath", "Blow dry", "Brush out", "Nail trim", "Ear cleaning and/or plucking", "Fragrance", "Decorative Bandana or Bow"]
+      includes: ["Maintenance Trim", "Bath & Blow dry", "Nail trim", "Ear cleaning", "Fragrance", "Decorative Bandana"],
+      note: "Maintenance trim includes hair out of the eyes, sanitary areas, and under paw pads only"
     }
   ];
 
@@ -101,7 +107,7 @@ export default function Services() {
       />
       
       {/* Header Section */}
-      <Column gap="l" marginBottom="xl">
+      <Column gap="l" marginBottom="xl" paddingTop="l">
         <Heading variant="display-strong-l" style={{ 
           textAlign: "center",
           color: "#1e40af", 
@@ -113,19 +119,12 @@ export default function Services() {
         <Text variant="body-default-l" style={{ textAlign: "center" }} color="neutral-on-background-weak">
           
         </Text>
-        <Flex horizontal="center">
-          <Column as="ul" gap="0" style={{ textAlign: "left" }}>
-            <Text as="li" variant="body-default-s" color="neutral-on-background-weak" style={{ fontStyle: "italic" }}>
-              I have no issue working with puppies 12 weeks or older and senior dogs; they will receive gentle care tailored to their specific needs.
-            </Text>
-          </Column>
-        </Flex>
         <Card
           background="brand-alpha-weak"
           padding="l"
           style={{ textAlign: "center", maxWidth: "600px", margin: "0 auto", position: "relative", zIndex: 1 }}
         >
-          <Text variant="display-strong-s" color="brand-on-background">
+          <Text variant="body-default-s" color="neutral-on-background-weak" style={{ fontStyle: "italic" }}>
             Price varies depending on size, breed, coat, condition, type of service, etc.
           </Text>
         </Card>
@@ -206,6 +205,11 @@ export default function Services() {
                         </Flex>
                       ))}
                     </div>
+                    {service.note && (
+                      <Text variant="body-default-s" color="neutral-on-background-weak" style={{ fontStyle: "italic" }}>
+                        {service.note}
+                      </Text>
+                    )}
                   </Column>
                 </Column>
              </Card>
@@ -280,20 +284,30 @@ export default function Services() {
               </Button>
             </Flex>
             <Column gap="8" horizontal="center" marginTop="l" style={{ pointerEvents: "auto" }}>
-              <Flex gap="8" vertical="center">
-                <Icon name="email" size="xs" />
-                <a href={`mailto:${person.email}`} style={{ color: "inherit", textDecoration: "none" }}>
-                  <Text variant="body-default-m">{person.email}</Text>
-                </a>
-              </Flex>
               {person.phone && (
                 <Flex gap="8" vertical="center">
                   <Icon name="phone" size="xs" />
                   <a href={`tel:${person.phone.replace(/[^+\\d]/g, "")}`} style={{ color: "inherit", textDecoration: "none" }}>
-                    <Text variant="body-default-m">{person.phone}</Text>
+                    <Text variant="body-default-l" style={{ 
+                      fontWeight: "700", 
+                      color: "#1a1a1a",
+                      fontFamily: "'Playfair Display', serif"
+                    }}>
+                      {person.phone.replace(/\D/g, '').replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')}
+                    </Text>
                   </a>
                 </Flex>
               )}
+              <Flex gap="8" vertical="center">
+                <Icon name="email" size="xs" />
+                <a href={`mailto:${person.email}`} style={{ color: "inherit", textDecoration: "none" }}>
+                  <Text variant="body-default-l" style={{ 
+                    fontWeight: "700", 
+                    color: "#1a1a1a",
+                    fontFamily: "'Playfair Display', serif"
+                  }}>{person.email}</Text>
+                </a>
+              </Flex>
             </Column>
           </Column>
         </Card>

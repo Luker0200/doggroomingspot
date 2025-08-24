@@ -59,30 +59,7 @@ export const Header = () => {
       <Fade hide="s" fillWidth position="fixed" height="80" zIndex={9} />
       <Fade show="s" fillWidth position="fixed" bottom="0" to="top" height="80" zIndex={9} />
       
-      {/* Mobile floating logo */}
-      <a 
-        href="/" 
-        className="s-flex-show"
-        style={{ 
-          textDecoration: 'none',
-          display: 'flex',
-          alignItems: 'center',
-          position: 'fixed',
-          left: '0px',
-          top: '0px',
-          zIndex: 10
-        }}
-      >
-        <img 
-          src="/vectors/groomingspot-dog-logo.svg" 
-          alt="Grooming Spot Logo" 
-          style={{ 
-            height: '32px', 
-            width: 'auto',
-            filter: 'var(--logo-filter, none)' // This will adapt to theme
-          }} 
-        />
-      </a>
+
       
       {/* Mobile page indicator */}
       <Flex

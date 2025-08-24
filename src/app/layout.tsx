@@ -85,9 +85,37 @@ export default async function RootLayout({
             `,
           }}
         />
+        <script
+          id="scroll-handler"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                function handleScroll() {
+                  const body = document.body;
+                  const scrollThreshold = 200; // Start fading after 200px of scroll
+                  
+                  if (window.scrollY > scrollThreshold) {
+                    body.classList.add('scrolled');
+                  } else {
+                    body.classList.remove('scrolled');
+                  }
+                }
+                
+                // Add scroll listener when DOM is ready
+                if (document.readyState === 'loading') {
+                  document.addEventListener('DOMContentLoaded', function() {
+                    window.addEventListener('scroll', handleScroll, { passive: true });
+                  });
+                } else {
+                  window.addEventListener('scroll', handleScroll, { passive: true });
+                }
+              })();
+            `,
+          }}
+        />
       </head>
       <Providers>
-                  <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center" className="bubble1">
+                  <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center" className="bubble1 bubble2" id="body-element">
           <Background
             position="fixed"
             mask={{

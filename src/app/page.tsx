@@ -57,20 +57,30 @@ export default function Home() {
           </RevealFx>
           <RevealFx translateY="4" delay={0.25} fillWidth horizontal="start" paddingBottom="16">
             <Column gap="8" fillWidth horizontal="start">
-              <Flex gap="8" vertical="center">
-                <Icon name="email" size="xs" />
-                <a href={`mailto:${person.email}`} style={{ color: "inherit", textDecoration: "none" }}>
-                  <Text variant="body-default-m">{person.email}</Text>
-                </a>
-              </Flex>
               {person.phone && (
                 <Flex gap="8" vertical="center">
                   <Icon name="phone" size="xs" />
                   <a href={`tel:${person.phone.replace(/[^+\\d]/g, "")}`} style={{ color: "inherit", textDecoration: "none" }}>
-                    <Text variant="body-default-m">{person.phone}</Text>
+                    <Text variant="heading-strong-xl" style={{ 
+                      fontWeight: "700", 
+                      color: "#1a1a1a",
+                      fontFamily: "'Playfair Display', serif"
+                    }}>
+                      {person.phone.replace(/\D/g, '').replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')}
+                    </Text>
                   </a>
                 </Flex>
               )}
+              <Flex gap="8" vertical="center">
+                <Icon name="email" size="xs" />
+                <a href={`mailto:${person.email}`} style={{ color: "inherit", textDecoration: "none" }}>
+                  <Text variant="body-default-l" style={{ 
+                    fontWeight: "700", 
+                    color: "#1a1a1a",
+                    fontFamily: "'Playfair Display', serif"
+                  }}>{person.email}</Text>
+                </a>
+              </Flex>
             </Column>
           </RevealFx>
           <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="16">
@@ -79,14 +89,32 @@ export default function Home() {
             </Text>
           </RevealFx>
           <RevealFx translateY="8" delay={0.3} fillWidth horizontal="start" paddingBottom="32">
-            <Column gap="8" paddingLeft="16">
-              {home.features.map((feature, index) => (
-                <Flex key={index} gap="8" vertical="center">
-                  <Text variant="body-default-m" onBackground="neutral-medium">•</Text>
-                  <Text variant="body-default-m" onBackground="neutral-medium">{feature}</Text>
-                </Flex>
-              ))}
-            </Column>
+            <Flex gap="8" vertical="start" fillWidth>
+              <Column gap="8" paddingLeft="8" flex="1">
+                {home.features.map((feature, index) => (
+                  <Flex key={index} gap="8" vertical="center">
+                    <Text variant="body-default-m" onBackground="neutral-medium">•</Text>
+                    <Text variant="body-default-m" onBackground="neutral-medium">{feature}</Text>
+                  </Flex>
+                ))}
+              </Column>
+              <div style={{ 
+                display: "flex", 
+                justifyContent: "center", 
+                alignItems: "center",
+                flex: "0 0 auto"
+              }}>
+                <img 
+                  src="/vectors/groomingspot-dog-logo.svg" 
+                  alt="The Grooming Spot Mascot" 
+                  style={{ 
+                    width: "120px", 
+                    height: "auto",
+                    filter: "drop-shadow(2px 2px 4px rgba(0,0,0,0.1))"
+                  }} 
+                />
+              </div>
+            </Flex>
           </RevealFx>
           <RevealFx paddingTop="12" delay={0.4} horizontal="start" paddingLeft="12">
             <Button
@@ -113,76 +141,7 @@ export default function Home() {
           </RevealFx>
         </Flex>
       </Flex>
-      {/* About Us Preview Section */}
-      <Column gap="xl" fillWidth marginTop="xl" id="about-preview">
-        <RevealFx delay={0.8} fillWidth>
-          <Column gap="l" fillWidth horizontal="center">
-            <Flex gap="m" vertical="center">
-              <Heading variant="display-strong-s" style={{ 
-                textAlign: "center",
-                color: "#1e40af", 
-                fontFamily: "'Playfair Display', serif",
-                fontWeight: "600"
-              }}>
-                Meet Your Dog Groomer
-              </Heading>
-              <Button 
-                href={about.path} 
-                variant="secondary" 
-                size="s" 
-                suffixIcon="chevronRight"
-                style={{
-                  backgroundColor: "rgba(135, 206, 235, 0.8)", // Water blue
-                  borderColor: "rgba(135, 206, 235, 0.9)",
-                  color: "#1a1a1a", // Dark text for contrast
-                }}
-              >
-                Learn More
-              </Button>
-            </Flex>
-            
-                         <Card background="neutral-weak" padding="l" style={{ maxWidth: "720px", pointerEvents: "none", margin: "0 auto" }}>
-              <Flex fillWidth mobileDirection="column" gap="l" vertical="center">
-                <Avatar src={person.avatar} size="xl" />
-                <Column gap="m" flex="1">
-                  <Text variant="body-default-m" style={{ textAlign: "center" }}>
-                    Hi! My name is {person.firstName}. I have been grooming since 2010. I love all animals and have experience with dogs, cats, horses, goats, and more! 🐾
-                  </Text>
-                  <Text variant="body-default-s" onBackground="neutral-weak" style={{ textAlign: "center" }}>
-                    I graduated from grooming academy where I learned all breed standards, safety, and dog behavior. After recovering from surgery, I'm happy to be back doing what I love with our new mobile service!
-                  </Text>
-                  <Flex gap="8" horizontal="center" fillWidth marginTop="s">
-                    <Flex gap="8" vertical="center" style={{ pointerEvents: "auto" }}>
-                      <Icon name="email" size="xs" />
-                      <a href={`mailto:${person.email}`} style={{ 
-                        color: "inherit", 
-                        textDecoration: "none",
-                        display: "inline-block",
-                        transition: "none"
-                      }}>
-                        <Text variant="body-default-s">{person.email}</Text>
-                      </a>
-                    </Flex>
-                    {person.phone && (
-                      <Flex gap="8" vertical="center" style={{ pointerEvents: "auto" }}>
-                        <Icon name="phone" size="xs" />
-                        <a href={`tel:${person.phone.replace(/[^+\\d]/g, "")}`} style={{ 
-                          color: "inherit", 
-                          textDecoration: "none",
-                          display: "inline-block",
-                          transition: "none"
-                        }}>
-                          <Text variant="body-default-s">{person.phone}</Text>
-                        </a>
-                      </Flex>
-                    )}
-                  </Flex>
-                </Column>
-              </Flex>
-            </Card>
-          </Column>
-        </RevealFx>
-      </Column>
+
 
       {/* Services Preview Section */}
       <Column gap="xl" fillWidth marginTop="xl" id="services-preview">

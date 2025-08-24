@@ -201,20 +201,30 @@ export default function About() {
                   )}
                 </Flex>
                 <Column gap="8" fillWidth horizontal="start">
-                  <Flex gap="8" vertical="center">
-                    <Icon name="email" size="xs" />
-                    <a href={`mailto:${person.email}`} style={{ color: "inherit", textDecoration: "none" }}>
-                      <Text variant="body-default-m">{person.email}</Text>
-                    </a>
-                  </Flex>
                   {person.phone && (
                     <Flex gap="8" vertical="center">
                       <Icon name="phone" size="xs" />
                       <a href={`tel:${person.phone.replace(/[^+\\d]/g, "")}`} style={{ color: "inherit", textDecoration: "none" }}>
-                        <Text variant="body-default-m">{person.phone}</Text>
+                        <Text variant="body-default-l" style={{ 
+                          fontWeight: "700", 
+                          color: "#1a1a1a",
+                          fontFamily: "'Playfair Display', serif"
+                        }}>
+                          {person.phone.replace(/\D/g, '').replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')}
+                        </Text>
                       </a>
                     </Flex>
                   )}
+                  <Flex gap="8" vertical="center">
+                    <Icon name="email" size="xs" />
+                    <a href={`mailto:${person.email}`} style={{ color: "inherit", textDecoration: "none" }}>
+                      <Text variant="body-default-l" style={{ 
+                        fontWeight: "700", 
+                        color: "#1a1a1a",
+                        fontFamily: "'Playfair Display', serif"
+                      }}>{person.email}</Text>
+                    </a>
+                  </Flex>
                 </Column>
               </Column>
             )}
