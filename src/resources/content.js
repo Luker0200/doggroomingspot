@@ -43,7 +43,7 @@ const social = [
   {
     name: "Facebook",
     icon: "facebook",
-    link: "https://www.facebook.com/charlene.luke.54738/",
+    link: "https://www.facebook.com/GroomingSpot",
   },
 ];
 
@@ -201,44 +201,9 @@ const gallery = {
   description: `A photo collection by ${person.name}`,
   images: [
     {
-      src: "/images/gallery/ai-gen/ai-dog-1.png",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/ai-gen/ai-dog-2.png",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/ai-gen/ai-dog-3.png",
+      src: "/images/gallery/IMG_2269.jpg",
       alt: "image",
       orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/ai-gen/ai-dog-4.png",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/ai-gen/ai-dog-5.png",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/ai-gen/ai-dog-6.png",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/ai-gen/ai-dog-7.png",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/ai-gen/ai-dog-8.png",
-      alt: "image",
-      orientation: "vertical",
     },
   ],
 };

@@ -13,50 +13,50 @@
   transition: opacity 0.3s ease-out, transform 0.1s ease-out;
   background-image: 
     /* Large bubbles with shine effect */
-    radial-gradient(circle at 15% 25%, rgba(135, 206, 250, 0.8) 8px, transparent 9px),
-    radial-gradient(circle at 85% 15%, rgba(100, 149, 237, 0.7) 12px, transparent 13px),
-    radial-gradient(circle at 65% 35%, rgba(173, 216, 230, 0.8) 10px, transparent 11px),
-    radial-gradient(circle at 25% 65%, rgba(135, 206, 250, 0.7) 14px, transparent 15px),
-    radial-gradient(circle at 90% 70%, rgba(100, 149, 237, 0.8) 9px, transparent 10px),
-    radial-gradient(circle at 45% 85%, rgba(173, 216, 230, 0.7) 11px, transparent 12px),
-    radial-gradient(circle at 5% 80%, rgba(135, 206, 250, 0.8) 13px, transparent 14px),
-    radial-gradient(circle at 75% 55%, rgba(100, 149, 237, 0.7) 7px, transparent 8px),
+    radial-gradient(circle at 15% 25%, rgba(135, 206, 250, 0.8) 16px, transparent 18px),
+    radial-gradient(circle at 85% 15%, rgba(100, 149, 237, 0.7) 24px, transparent 26px),
+    radial-gradient(circle at 65% 35%, rgba(173, 216, 230, 0.8) 20px, transparent 22px),
+    radial-gradient(circle at 25% 65%, rgba(135, 206, 250, 0.7) 28px, transparent 30px),
+    radial-gradient(circle at 90% 70%, rgba(100, 149, 237, 0.8) 18px, transparent 20px),
+    radial-gradient(circle at 45% 85%, rgba(173, 216, 230, 0.7) 22px, transparent 24px),
+    radial-gradient(circle at 5% 80%, rgba(135, 206, 250, 0.8) 26px, transparent 28px),
+    radial-gradient(circle at 75% 55%, rgba(100, 149, 237, 0.7) 14px, transparent 16px),
     
     /* Medium bubbles with shine effect */
-    radial-gradient(circle at 35% 15%, rgba(173, 216, 230, 0.8) 6px, transparent 7px),
-    radial-gradient(circle at 55% 25%, rgba(135, 206, 250, 0.7) 8px, transparent 9px),
-    radial-gradient(circle at 20% 45%, rgba(100, 149, 237, 0.8) 5px, transparent 6px),
-    radial-gradient(circle at 80% 40%, rgba(173, 216, 230, 0.7) 7px, transparent 8px),
-    radial-gradient(circle at 60% 75%, rgba(135, 206, 250, 0.8) 6px, transparent 7px),
-    radial-gradient(circle at 10% 60%, rgba(100, 149, 237, 0.7) 9px, transparent 10px),
-    radial-gradient(circle at 95% 90%, rgba(173, 216, 230, 0.8) 5px, transparent 6px),
-    radial-gradient(circle at 40% 95%, rgba(135, 206, 250, 0.7) 8px, transparent 9px),
+    radial-gradient(circle at 35% 15%, rgba(173, 216, 230, 0.8) 12px, transparent 14px),
+    radial-gradient(circle at 55% 25%, rgba(135, 206, 250, 0.7) 16px, transparent 18px),
+    radial-gradient(circle at 20% 45%, rgba(100, 149, 237, 0.8) 10px, transparent 12px),
+    radial-gradient(circle at 80% 40%, rgba(173, 216, 230, 0.7) 14px, transparent 16px),
+    radial-gradient(circle at 60% 75%, rgba(135, 206, 250, 0.8) 12px, transparent 14px),
+    radial-gradient(circle at 10% 60%, rgba(100, 149, 237, 0.7) 18px, transparent 20px),
+    radial-gradient(circle at 95% 90%, rgba(173, 216, 230, 0.8) 10px, transparent 12px),
+    radial-gradient(circle at 40% 95%, rgba(135, 206, 250, 0.7) 16px, transparent 18px),
     
     /* Small bubbles with shine effect */
-    radial-gradient(circle at 70% 10%, rgba(100, 149, 237, 0.8) 5px, transparent 6px),
-    radial-gradient(circle at 30% 30%, rgba(173, 216, 230, 0.7) 4px, transparent 5px),
-    radial-gradient(circle at 50% 50%, rgba(135, 206, 250, 0.8) 5px, transparent 6px),
-    radial-gradient(circle at 85% 85%, rgba(100, 149, 237, 0.7) 4px, transparent 5px),
-    radial-gradient(circle at 15% 90%, rgba(173, 216, 230, 0.8) 6px, transparent 7px),
-    radial-gradient(circle at 90% 25%, rgba(135, 206, 250, 0.7) 5px, transparent 6px),
+    radial-gradient(circle at 70% 10%, rgba(100, 149, 237, 0.8) 10px, transparent 12px),
+    radial-gradient(circle at 30% 30%, rgba(173, 216, 230, 0.7) 8px, transparent 10px),
+    radial-gradient(circle at 50% 50%, rgba(135, 206, 250, 0.8) 10px, transparent 12px),
+    radial-gradient(circle at 85% 85%, rgba(100, 149, 237, 0.7) 8px, transparent 10px),
+    radial-gradient(circle at 15% 90%, rgba(173, 216, 230, 0.8) 12px, transparent 14px),
+    radial-gradient(circle at 90% 25%, rgba(135, 206, 250, 0.7) 10px, transparent 12px),
     
     /* Shine highlights for bubbles */
-    radial-gradient(circle at 12% 22%, rgba(255, 255, 255, 0.6) 4px, transparent 5px),
-    radial-gradient(circle at 82% 12%, rgba(255, 255, 255, 0.5) 5px, transparent 6px),
-    radial-gradient(circle at 62% 32%, rgba(255, 255, 255, 0.6) 4px, transparent 5px),
-    radial-gradient(circle at 22% 62%, rgba(255, 255, 255, 0.5) 5px, transparent 6px),
-    radial-gradient(circle at 87% 67%, rgba(255, 255, 255, 0.6) 4px, transparent 5px),
-    radial-gradient(circle at 42% 82%, rgba(255, 255, 255, 0.5) 4px, transparent 5px),
-    radial-gradient(circle at 2% 77%, rgba(255, 255, 255, 0.6) 5px, transparent 6px),
-    radial-gradient(circle at 72% 52%, rgba(255, 255, 255, 0.5) 4px, transparent 5px);
+    radial-gradient(circle at 12% 22%, rgba(255, 255, 255, 0.6) 8px, transparent 10px),
+    radial-gradient(circle at 82% 12%, rgba(255, 255, 255, 0.5) 10px, transparent 12px),
+    radial-gradient(circle at 62% 32%, rgba(255, 255, 255, 0.6) 8px, transparent 10px),
+    radial-gradient(circle at 22% 62%, rgba(255, 255, 255, 0.5) 10px, transparent 12px),
+    radial-gradient(circle at 87% 67%, rgba(255, 255, 255, 0.6) 8px, transparent 10px),
+    radial-gradient(circle at 42% 82%, rgba(255, 255, 255, 0.5) 8px, transparent 10px),
+    radial-gradient(circle at 2% 77%, rgba(255, 255, 255, 0.6) 10px, transparent 12px),
+    radial-gradient(circle at 72% 52%, rgba(255, 255, 255, 0.5) 8px, transparent 10px);
   
   background-size: 
-    400px 400px, 500px 500px, 350px 350px, 450px 450px,
-    300px 300px, 400px 400px, 380px 380px, 320px 320px,
-    250px 250px, 280px 280px, 220px 220px, 300px 300px,
-    260px 260px, 290px 290px, 240px 240px, 310px 310px,
-    180px 180px, 200px 200px, 190px 190px, 210px 210px,
-    170px 170px, 195px 195px;
+    600px 600px, 750px 750px, 525px 525px, 675px 675px,
+    450px 450px, 600px 600px, 570px 570px, 480px 480px,
+    375px 375px, 420px 420px, 330px 330px, 450px 450px,
+    390px 390px, 435px 435px, 360px 360px, 465px 465px,
+    270px 270px, 300px 300px, 285px 285px, 315px 315px,
+    255px 255px, 292px 292px;
   
   background-position:
     0% 0%, 100% 0%, 50% 20%, 0% 50%,

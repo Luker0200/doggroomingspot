@@ -1,7 +1,6 @@
 import '@once-ui-system/core/css/styles.css';
 import '@once-ui-system/core/css/tokens.css';
 import '../styles/dalmatian-spots.css';
-import '../styles/paw-prints.css';
 
 import classNames from "classnames";
 
@@ -115,7 +114,7 @@ export default async function RootLayout({
         />
       </head>
       <Providers>
-                  <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center" className="bubble1 bubble2" id="body-element">
+                  <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center" className="bubble1" id="body-element">
           <Background
             position="fixed"
             mask={{

@@ -58,26 +58,29 @@ export default function Home() {
           <RevealFx translateY="4" delay={0.25} fillWidth horizontal="start" paddingBottom="16">
             <Column gap="8" fillWidth horizontal="start">
               {person.phone && (
-                <Flex gap="8" vertical="center">
-                  <Icon name="phone" size="xs" />
+                <Flex gap="12" vertical="center">
+                  <Icon name="phone" size="l" />
                   <a href={`tel:${person.phone.replace(/[^+\\d]/g, "")}`} style={{ color: "inherit", textDecoration: "none" }}>
-                    <Text variant="heading-strong-xl" style={{ 
-                      fontWeight: "700", 
+                    <Text variant="display-strong-l" style={{ 
+                      fontWeight: "900", 
                       color: "#1a1a1a",
-                      fontFamily: "'Playfair Display', serif"
+                      fontFamily: "'Arial Black', 'Helvetica Neue', Arial, sans-serif",
+                      fontSize: "2.5rem",
+                      letterSpacing: "0.05em"
                     }}>
                       {person.phone.replace(/\D/g, '').replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')}
                     </Text>
                   </a>
                 </Flex>
               )}
-              <Flex gap="8" vertical="center">
-                <Icon name="email" size="xs" />
+              <Flex gap="12" vertical="center">
+                <Icon name="email" size="l" />
                 <a href={`mailto:${person.email}`} style={{ color: "inherit", textDecoration: "none" }}>
-                  <Text variant="body-default-l" style={{ 
-                    fontWeight: "700", 
+                  <Text variant="heading-strong-l" style={{ 
+                    fontWeight: "800", 
                     color: "#1a1a1a",
-                    fontFamily: "'Playfair Display', serif"
+                    fontFamily: "'Arial Black', 'Helvetica Neue', Arial, sans-serif",
+                    fontSize: "1.8rem"
                   }}>{person.email}</Text>
                 </a>
               </Flex>
@@ -184,7 +187,20 @@ export default function Home() {
                margin: "0 auto"
              }}>
                {/* Full Groom Preview */}
-               <Column gap="m">
+               <Column gap="m" horizontal="center" className="s-flex-show">
+                 <Heading variant="heading-strong-m" style={{ textAlign: "center" }}>Full Groom</Heading>
+                 <Column gap="4" horizontal="center">
+                   {["Haircut", "Bath & Blow dry", "Nail trim", "Ear cleaning", "Fragrance", "Decorative Bandana"].map((item, index) => (
+                     <Flex key={index} gap="8" vertical="center">
+                       <Icon name="scissors" size="xs" />
+                       <Text variant="body-default-s">{item}</Text>
+                     </Flex>
+                   ))}
+                 </Column>
+               </Column>
+               
+               {/* Full Groom Preview - Desktop */}
+               <Column gap="m" className="s-flex-hide">
                  <Heading variant="heading-strong-m">Full Groom</Heading>
                  <Column gap="4" paddingLeft="16">
                    {["Haircut", "Bath & Blow dry", "Nail trim", "Ear cleaning", "Fragrance", "Decorative Bandana"].map((item, index) => (
@@ -196,8 +212,24 @@ export default function Home() {
                  </Column>
                </Column>
 
-                               {/* Sanitary Groom Preview */}
-                <Column gap="m">
+               {/* Sanitary Groom Preview - Mobile */}
+                <Column gap="m" horizontal="center" className="s-flex-show">
+                  <Heading variant="heading-strong-m" style={{ textAlign: "center" }}>Sanitary Groom</Heading>
+                  <Column gap="4" horizontal="center">
+                    {["Maintenance Trim", "Bath & Blow dry", "Nail trim", "Ear cleaning", "Fragrance", "Decorative Bandana"].map((item, index) => (
+                      <Flex key={index} gap="8" vertical="center">
+                        <Icon name="scissors" size="xs" />
+                        <Text variant="body-default-s">{item}</Text>
+                      </Flex>
+                    ))}
+                  </Column>
+                  <Text variant="body-default-s" color="neutral-on-background-weak" style={{ fontStyle: "italic", textAlign: "center" }}>
+                    Maintenance trim includes hair out of the eyes, sanitary areas, and under paw pads only
+                  </Text>
+                </Column>
+                
+                {/* Sanitary Groom Preview - Desktop */}
+                <Column gap="m" className="s-flex-hide">
                   <Heading variant="heading-strong-m">Sanitary Groom</Heading>
                   <Column gap="4" paddingLeft="16">
                     {["Maintenance Trim", "Bath & Blow dry", "Nail trim", "Ear cleaning", "Fragrance", "Decorative Bandana"].map((item, index) => (
@@ -328,7 +360,7 @@ export default function Home() {
                 </Column>
 
                 {/* CTA */}
-                <Flex horizontal="center" marginTop="m">
+                <Flex horizontal="center" marginTop="m" style={{ pointerEvents: "auto" }}>
                   <Button href={appointment.path} variant="primary" size="m" arrowIcon>
                     Fill Out a Full Form Here!
                   </Button>

@@ -202,26 +202,29 @@ export default function About() {
                 </Flex>
                 <Column gap="8" fillWidth horizontal="start">
                   {person.phone && (
-                    <Flex gap="8" vertical="center">
-                      <Icon name="phone" size="xs" />
+                    <Flex gap="12" vertical="center">
+                      <Icon name="phone" size="l" />
                       <a href={`tel:${person.phone.replace(/[^+\\d]/g, "")}`} style={{ color: "inherit", textDecoration: "none" }}>
-                        <Text variant="body-default-l" style={{ 
-                          fontWeight: "700", 
+                        <Text variant="display-strong-l" style={{ 
+                          fontWeight: "900", 
                           color: "#1a1a1a",
-                          fontFamily: "'Playfair Display', serif"
+                          fontFamily: "'Arial Black', 'Helvetica Neue', Arial, sans-serif",
+                          fontSize: "2.5rem",
+                          letterSpacing: "0.05em"
                         }}>
                           {person.phone.replace(/\D/g, '').replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')}
                         </Text>
                       </a>
                     </Flex>
                   )}
-                  <Flex gap="8" vertical="center">
-                    <Icon name="email" size="xs" />
+                  <Flex gap="12" vertical="center">
+                    <Icon name="email" size="l" />
                     <a href={`mailto:${person.email}`} style={{ color: "inherit", textDecoration: "none" }}>
-                      <Text variant="body-default-l" style={{ 
-                        fontWeight: "700", 
+                      <Text variant="heading-strong-l" style={{ 
+                        fontWeight: "800", 
                         color: "#1a1a1a",
-                        fontFamily: "'Playfair Display', serif"
+                        fontFamily: "'Arial Black', 'Helvetica Neue', Arial, sans-serif",
+                        fontSize: "1.8rem"
                       }}>{person.email}</Text>
                     </a>
                   </Flex>
