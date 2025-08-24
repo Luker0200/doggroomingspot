@@ -6,7 +6,7 @@ import { Mailchimp, RevolvingGallery } from "@/components";
 
 // Add CSS for placeholder styling and Google Fonts
 const placeholderStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600;700&family=Poppins:wght@400;600;700;800;900&display=swap');
   
   #preview-name::placeholder,
   #preview-phone::placeholder,
@@ -18,6 +18,25 @@ const placeholderStyles = `
 `;
 
 export default function Home() {
+  const getServiceIcon = (service: string) => {
+    const iconMap: Record<string, string> = {
+      "Haircut": "scissors",
+      "Maintenance Trim": "scissors",
+      "Bath": "bathtub", 
+      "Bath & Blow dry": "bathtub",
+      "Blow dry": "hairDryer",
+      "Brush out": "brush",
+      "Fragrance": "flower",
+      "Nail trim": "pawprint",
+      "Ear cleaning and/or plucking": "ear",
+      "Ear cleaning": "ear",
+      "Decorative Bandana or Bow": "bowtie",
+      "Decorative Bandana": "bowtie",
+      "Trim out of eyes, sanitary area, paw pads": "scissors"
+    };
+    return iconMap[service] || "scissors";
+  };
+
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: placeholderStyles }} />
@@ -49,8 +68,9 @@ export default function Home() {
           <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="16">
             <Heading wrap="nowrap" variant="display-strong-l" style={{ 
               color: "#1e40af", 
-              fontFamily: "'Playfair Display', serif",
-              fontWeight: "600"
+              fontFamily: "'Crimson Text', serif",
+              fontWeight: "700",
+              letterSpacing: "0.02em"
             }}>
               {home.headline}
             </Heading>
@@ -58,29 +78,28 @@ export default function Home() {
           <RevealFx translateY="4" delay={0.25} fillWidth horizontal="start" paddingBottom="16">
             <Column gap="8" fillWidth horizontal="start">
               {person.phone && (
-                <Flex gap="12" vertical="center">
-                  <Icon name="phone" size="l" />
+                <Flex gap="12" vertical="center" horizontal="center">
                   <a href={`tel:${person.phone.replace(/[^+\\d]/g, "")}`} style={{ color: "inherit", textDecoration: "none" }}>
                     <Text variant="display-strong-l" style={{ 
-                      fontWeight: "900", 
+                      fontWeight: "800", 
                       color: "#1a1a1a",
-                      fontFamily: "'Arial Black', 'Helvetica Neue', Arial, sans-serif",
+                      fontFamily: "'Poppins', sans-serif",
                       fontSize: "2.5rem",
-                      letterSpacing: "0.05em"
+                      letterSpacing: "0.02em"
                     }}>
                       {person.phone.replace(/\D/g, '').replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')}
                     </Text>
                   </a>
                 </Flex>
               )}
-              <Flex gap="12" vertical="center">
-                <Icon name="email" size="l" />
+              <Flex gap="12" vertical="center" horizontal="center">
                 <a href={`mailto:${person.email}`} style={{ color: "inherit", textDecoration: "none" }}>
-                  <Text variant="heading-strong-l" style={{ 
-                    fontWeight: "800", 
-                    color: "#1a1a1a",
-                    fontFamily: "'Arial Black', 'Helvetica Neue', Arial, sans-serif",
-                    fontSize: "1.8rem"
+                  <Text variant="body-default-s" style={{ 
+                    fontWeight: "400", 
+                    color: "#666666",
+                    fontFamily: "'Arial', sans-serif",
+                    fontSize: "0.9rem",
+                    fontStyle: "italic"
                   }}>{person.email}</Text>
                 </a>
               </Flex>
@@ -192,7 +211,7 @@ export default function Home() {
                  <Column gap="4" horizontal="center">
                    {["Haircut", "Bath & Blow dry", "Nail trim", "Ear cleaning", "Fragrance", "Decorative Bandana"].map((item, index) => (
                      <Flex key={index} gap="8" vertical="center">
-                       <Icon name="scissors" size="xs" />
+                       <Icon name={getServiceIcon(item)} size="xs" />
                        <Text variant="body-default-s">{item}</Text>
                      </Flex>
                    ))}
@@ -205,7 +224,7 @@ export default function Home() {
                  <Column gap="4" paddingLeft="16">
                    {["Haircut", "Bath & Blow dry", "Nail trim", "Ear cleaning", "Fragrance", "Decorative Bandana"].map((item, index) => (
                      <Flex key={index} gap="8" vertical="center">
-                       <Icon name="scissors" size="xs" />
+                       <Icon name={getServiceIcon(item)} size="xs" />
                        <Text variant="body-default-s">{item}</Text>
                      </Flex>
                    ))}
@@ -218,7 +237,7 @@ export default function Home() {
                   <Column gap="4" horizontal="center">
                     {["Maintenance Trim", "Bath & Blow dry", "Nail trim", "Ear cleaning", "Fragrance", "Decorative Bandana"].map((item, index) => (
                       <Flex key={index} gap="8" vertical="center">
-                        <Icon name="scissors" size="xs" />
+                        <Icon name={getServiceIcon(item)} size="xs" />
                         <Text variant="body-default-s">{item}</Text>
                       </Flex>
                     ))}
@@ -234,7 +253,7 @@ export default function Home() {
                   <Column gap="4" paddingLeft="16">
                     {["Maintenance Trim", "Bath & Blow dry", "Nail trim", "Ear cleaning", "Fragrance", "Decorative Bandana"].map((item, index) => (
                       <Flex key={index} gap="8" vertical="center">
-                        <Icon name="scissors" size="xs" />
+                        <Icon name={getServiceIcon(item)} size="xs" />
                         <Text variant="body-default-s">{item}</Text>
                       </Flex>
                     ))}

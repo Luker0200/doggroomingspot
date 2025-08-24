@@ -59,10 +59,11 @@ export const RevolvingGallery: React.FC = () => {
         vertical="center"
         style={{
           minHeight: "400px",
+          maxHeight: "500px",
           position: "relative",
-          overflow: "hidden",
           borderRadius: "12px",
           border: "2px solid #333",
+          overflow: "hidden",
         }}
       >
         <Media
@@ -73,7 +74,7 @@ export const RevolvingGallery: React.FC = () => {
           style={{
             width: "100%",
             height: "100%",
-            objectFit: "cover",
+            objectFit: "contain",
             transition: "opacity 0.5s ease-in-out",
           }}
         />
