@@ -13,6 +13,12 @@ const nextConfig = {
     compiler: "modern",
     silenceDeprecations: ["legacy-js-api"],
   },
+  // Configure body size limit for file uploads
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '10mb', // Allow up to 10MB for file uploads
+    },
+  },
 };
 
 export default withMDX(nextConfig);

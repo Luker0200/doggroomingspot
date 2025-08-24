@@ -5,10 +5,12 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 120%;
   pointer-events: none;
   z-index: -1;
   opacity: 0.5;
+  transform: translateY(0px);
+  transition: transform 0.1s ease-out;
   background-image: 
     /* Large bubbles with shine effect */
     radial-gradient(circle at 15% 25%, rgba(135, 206, 250, 0.8) 8px, transparent 9px),
@@ -31,22 +33,22 @@
     radial-gradient(circle at 40% 95%, rgba(135, 206, 250, 0.7) 8px, transparent 9px),
     
     /* Small bubbles with shine effect */
-    radial-gradient(circle at 70% 10%, rgba(100, 149, 237, 0.8) 4px, transparent 5px),
-    radial-gradient(circle at 30% 30%, rgba(173, 216, 230, 0.7) 3px, transparent 4px),
-    radial-gradient(circle at 50% 50%, rgba(135, 206, 250, 0.8) 4px, transparent 5px),
-    radial-gradient(circle at 85% 85%, rgba(100, 149, 237, 0.7) 3px, transparent 4px),
-    radial-gradient(circle at 15% 90%, rgba(173, 216, 230, 0.8) 5px, transparent 6px),
-    radial-gradient(circle at 90% 25%, rgba(135, 206, 250, 0.7) 4px, transparent 5px),
+    radial-gradient(circle at 70% 10%, rgba(100, 149, 237, 0.8) 5px, transparent 6px),
+    radial-gradient(circle at 30% 30%, rgba(173, 216, 230, 0.7) 4px, transparent 5px),
+    radial-gradient(circle at 50% 50%, rgba(135, 206, 250, 0.8) 5px, transparent 6px),
+    radial-gradient(circle at 85% 85%, rgba(100, 149, 237, 0.7) 4px, transparent 5px),
+    radial-gradient(circle at 15% 90%, rgba(173, 216, 230, 0.8) 6px, transparent 7px),
+    radial-gradient(circle at 90% 25%, rgba(135, 206, 250, 0.7) 5px, transparent 6px),
     
     /* Shine highlights for bubbles */
-    radial-gradient(circle at 12% 22%, rgba(255, 255, 255, 0.6) 2px, transparent 3px),
-    radial-gradient(circle at 82% 12%, rgba(255, 255, 255, 0.5) 3px, transparent 4px),
-    radial-gradient(circle at 62% 32%, rgba(255, 255, 255, 0.6) 2px, transparent 3px),
-    radial-gradient(circle at 22% 62%, rgba(255, 255, 255, 0.5) 3px, transparent 4px),
-    radial-gradient(circle at 87% 67%, rgba(255, 255, 255, 0.6) 2px, transparent 3px),
-    radial-gradient(circle at 42% 82%, rgba(255, 255, 255, 0.5) 2px, transparent 3px),
-    radial-gradient(circle at 2% 77%, rgba(255, 255, 255, 0.6) 3px, transparent 4px),
-    radial-gradient(circle at 72% 52%, rgba(255, 255, 255, 0.5) 1px, transparent 2px);
+    radial-gradient(circle at 12% 22%, rgba(255, 255, 255, 0.6) 4px, transparent 5px),
+    radial-gradient(circle at 82% 12%, rgba(255, 255, 255, 0.5) 5px, transparent 6px),
+    radial-gradient(circle at 62% 32%, rgba(255, 255, 255, 0.6) 4px, transparent 5px),
+    radial-gradient(circle at 22% 62%, rgba(255, 255, 255, 0.5) 5px, transparent 6px),
+    radial-gradient(circle at 87% 67%, rgba(255, 255, 255, 0.6) 4px, transparent 5px),
+    radial-gradient(circle at 42% 82%, rgba(255, 255, 255, 0.5) 4px, transparent 5px),
+    radial-gradient(circle at 2% 77%, rgba(255, 255, 255, 0.6) 5px, transparent 6px),
+    radial-gradient(circle at 72% 52%, rgba(255, 255, 255, 0.5) 4px, transparent 5px);
   
   background-size: 
     400px 400px, 500px 500px, 350px 350px, 450px 450px,
@@ -68,6 +70,66 @@
 /* Apply to body */
 body.bubble1 {
   position: relative;
+}
+
+/* Parallax scroll effect for bubbles */
+@media (prefers-reduced-motion: no-preference) {
+  .bubble1::before {
+    animation: bubble-parallax 20s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes bubble-parallax {
+  0% { 
+    transform: translateY(0px) scale(1);
+    background-position:
+      0% 0%, 100% 0%, 50% 20%, 0% 50%,
+      80% 30%, 20% 70%, 60% 90%, 40% 40%,
+      10% 10%, 90% 60%, 30% 80%, 70% 20%,
+      50% 60%, 20% 20%, 80% 80%, 60% 40%,
+      40% 10%, 10% 70%, 70% 70%, 90% 40%,
+      30% 50%, 80% 10%;
+  }
+  25% { 
+    transform: translateY(-10px) scale(1.01);
+    background-position:
+      -2% -1%, 102% 1%, 48% 21%, -1% 49%,
+      82% 29%, 18% 71%, 62% 89%, 42% 39%,
+      8% 11%, 92% 59%, 32% 79%, 72% 19%,
+      52% 59%, 18% 21%, 82% 79%, 62% 39%,
+      38% 11%, 8% 71%, 72% 69%, 92% 39%,
+      28% 51%, 82% 9%;
+  }
+  50% { 
+    transform: translateY(-5px) scale(0.99);
+    background-position:
+      1% 2%, 99% -2%, 51% 18%, 1% 52%,
+      79% 32%, 21% 68%, 59% 92%, 39% 42%,
+      11% 8%, 89% 62%, 29% 82%, 69% 22%,
+      49% 62%, 21% 18%, 79% 82%, 59% 42%,
+      41% 8%, 11% 68%, 69% 72%, 89% 42%,
+      31% 48%, 79% 12%;
+  }
+  75% { 
+    transform: translateY(-15px) scale(1.02);
+    background-position:
+      -1% 1%, 101% -1%, 49% 19%, -2% 51%,
+      81% 31%, 19% 69%, 61% 91%, 41% 41%,
+      9% 9%, 91% 61%, 31% 81%, 71% 21%,
+      51% 61%, 19% 19%, 81% 81%, 61% 41%,
+      39% 9%, 9% 69%, 71% 71%, 91% 41%,
+      29% 49%, 81% 11%;
+  }
+  100% { 
+    transform: translateY(-8px) scale(1);
+    background-position:
+      2% -1%, 98% 1%, 52% 22%, 2% 48%,
+      78% 28%, 22% 72%, 58% 88%, 38% 38%,
+      12% 12%, 88% 58%, 28% 78%, 68% 18%,
+      48% 58%, 22% 22%, 78% 78%, 58% 38%,
+      42% 12%, 12% 72%, 68% 68%, 88% 38%,
+      32% 52%, 78% 8%;
+  }
 }
 
 /* FORCE LIGHT THEME - Override any system dark mode preferences */

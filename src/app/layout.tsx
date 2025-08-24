@@ -87,7 +87,7 @@ export default async function RootLayout({
         />
       </head>
       <Providers>
-                  <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center" className="bubble1 bubble2">
+                  <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center" className="bubble1">
           <Background
             position="fixed"
             mask={{

@@ -17,6 +17,11 @@ import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
 
+// Add CSS for Google Fonts
+const fontStyles = `
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
+`;
+
 export async function generateMetadata() {
   return Meta.generate({
     title: about.title,
@@ -51,7 +56,9 @@ export default function About() {
     },
   ];
   return (
-    <Column maxWidth="m">
+    <>
+      <style dangerouslySetInnerHTML={{ __html: fontStyles }} />
+      <Column maxWidth="m">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -124,7 +131,11 @@ export default function About() {
                  Press Here to Get in Touch!
                </Button>
              )}
-            <Heading className={styles.textAlign} variant="display-strong-xl" wrap="nowrap">
+            <Heading className={styles.textAlign} variant="display-strong-xl" wrap="nowrap" style={{ 
+              color: "#1e40af", 
+              fontFamily: "'Playfair Display', serif",
+              fontWeight: "600"
+            }}>
               {business.name}
             </Heading>
             <Text
@@ -217,7 +228,11 @@ export default function About() {
 
           {about.services.display && (
             <>
-              <Heading as="h2" id={about.services.title} variant="display-strong-s" marginBottom="m">
+              <Heading as="h2" id={about.services.title} variant="display-strong-s" marginBottom="m" style={{ 
+                color: "#1e40af", 
+                fontFamily: "'Playfair Display', serif",
+                fontWeight: "600"
+              }}>
                 {about.services.title}
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
@@ -279,7 +294,11 @@ export default function About() {
 
           {about.employee.display && (
             <>
-              <Heading as="h2" id={about.employee.title} variant="display-strong-s" marginBottom="m">
+              <Heading as="h2" id={about.employee.title} variant="display-strong-s" marginBottom="m" style={{ 
+                color: "#1e40af", 
+                fontFamily: "'Playfair Display', serif",
+                fontWeight: "600"
+              }}>
                 {about.employee.title}
               </Heading>
               <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
@@ -296,6 +315,11 @@ export default function About() {
                 id={about.technical.title}
                 variant="display-strong-s"
                 marginBottom="40"
+                style={{ 
+                  color: "#1e40af", 
+                  fontFamily: "'Playfair Display', serif",
+                  fontWeight: "600"
+                }}
               >
                 {about.technical.title}
               </Heading>
@@ -354,5 +378,6 @@ export default function About() {
         </Column>
       </Flex>
     </Column>
+    </>
   );
 }

@@ -32,42 +32,102 @@ export default function AppointmentForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Disable submit button during submission
+    const submitButton = e.currentTarget.querySelector('button[type="submit"]') as HTMLButtonElement;
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+    }
   
-    const formData = new FormData(e.currentTarget as HTMLFormElement);
-    const body = {
-      firstName: formData.get("first-name"),
-      lastName: formData.get("last-name"),
-      phone: formData.get("phone-number"),
-      altPhone: formData.get("alternate-phone"),
-      email: formData.get("email"),
-      dogName: formData.get("dog-name"),
-      dogBreed: formData.get("dog-breed"),
-      dogWeight: formData.get("dog-weight"),
-      dogDob: formData.get("dog-dob"),
-      mainService,
-      additionalServices,
-      desiredDate,
-      firstAvailable,
-      comments: formData.get("comments"),
-    };
+    try {
+      const formElement = e.currentTarget as HTMLFormElement;
+      const formDataFromForm = new FormData(formElement);
+      
+      // Validate total file size before submission
+      const totalSize = selectedFiles.reduce((total, file) => total + file.size, 0) + 
+                       (dogPhoto ? dogPhoto.size : 0);
+      const maxTotalSize = 8 * 1024 * 1024; // 8MB total
+      
+      if (totalSize > maxTotalSize) {
+        alert(`Total file size is too large (${(totalSize / 1024 / 1024).toFixed(1)}MB). Please reduce file sizes or remove some files. Maximum total: 8MB`);
+        return;
+      }
+      
+      // Create new FormData with consistent field names for the API
+      const formData = new FormData();
+      
+      // Add basic form fields
+      formData.append("firstName", formDataFromForm.get("first-name") as string);
+      formData.append("lastName", formDataFromForm.get("last-name") as string);
+      formData.append("phone", formDataFromForm.get("phone-number") as string);
+      formData.append("altPhone", formDataFromForm.get("alternate-phone") as string || "");
+      formData.append("email", formDataFromForm.get("email") as string);
+      formData.append("dogName", formDataFromForm.get("dog-name") as string);
+      formData.append("dogBreed", formDataFromForm.get("dog-breed") as string);
+      formData.append("dogWeight", formDataFromForm.get("dog-weight") as string);
+      formData.append("dogAge", formDataFromForm.get("dog-age") as string);
+      formData.append("comments", formDataFromForm.get("comments") as string || "");
+      
+      // Add state-managed fields
+      formData.append("mainService", mainService);
+      formData.append("additionalServices", JSON.stringify(additionalServices));
+      formData.append("desiredDate", desiredDate);
+      formData.append("firstAvailable", firstAvailable.toString());
+      
+      // Add dog photo if selected
+      if (dogPhoto) {
+        formData.append("dogPhoto", dogPhoto);
+      }
+      
+      // Add document files
+      selectedFiles.forEach((file, index) => {
+        formData.append(`documents_${index}`, file);
+      });
   
-    const res = await fetch("/api/quote", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
+      const res = await fetch("/api/quote", {
+        method: "POST",
+        body: formData, // No Content-Type header - let browser set it with boundary
+      });
   
-    if (res.ok) {
-      alert("Thanks! We’ll contact you within 24 hours.");
-      (e.currentTarget as HTMLFormElement).reset();
-    } else {
+      if (res.ok) {
+        alert("Thanks! We'll contact you within 24 hours.");
+        formElement.reset();
+        // Reset state
+        setMainService("");
+        setAdditionalServices([]);
+        setDesiredDate("");
+        setFirstAvailable(false);
+        setSelectedFiles([]);
+        setDogPhoto(null);
+      } else {
+        const errorData = await res.json();
+        alert(`Error sending form: ${errorData.error || "Please try again."}`);
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
       alert("Error sending form, please try again.");
+    } finally {
+      // Re-enable submit button
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = "Submit Appointment Request";
+      }
     }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      setSelectedFiles(Array.from(e.target.files));
+      const files = Array.from(e.target.files);
+      const maxSize = 5 * 1024 * 1024; // 5MB per file
+      const oversizedFiles = files.filter(file => file.size > maxSize);
+      
+      if (oversizedFiles.length > 0) {
+        alert(`Some files are too large. Please ensure each file is under 5MB. Large files: ${oversizedFiles.map(f => f.name).join(', ')}`);
+        return;
+      }
+      
+      setSelectedFiles(files);
     }
   };
 
@@ -77,7 +137,15 @@ export default function AppointmentForm() {
 
   const handleDogPhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setDogPhoto(e.target.files[0]);
+      const file = e.target.files[0];
+      const maxSize = 5 * 1024 * 1024; // 5MB
+      
+      if (file.size > maxSize) {
+        alert(`Dog photo is too large. Please ensure the file is under 5MB. Current size: ${(file.size / 1024 / 1024).toFixed(1)}MB`);
+        return;
+      }
+      
+      setDogPhoto(file);
     }
   };
 
@@ -108,8 +176,12 @@ export default function AppointmentForm() {
     <Card
       background="neutral-alpha-weak"
       padding="xl" 
-      style={{ width: "min(100%, 880px)", marginInline: "auto" }}>
-      <form onSubmit={handleSubmit}>
+      style={{ 
+        width: "min(100%, 880px)", 
+        marginInline: "auto",
+        pointerEvents: "none"
+      }}>
+      <form onSubmit={handleSubmit} style={{ pointerEvents: "auto" }}>
         <Column gap="xl" horizontal="center" fillWidth>
           {/* Contact Information */}
           <Column gap="l" horizontal="center">
@@ -210,13 +282,15 @@ export default function AppointmentForm() {
                 />
               </div>
               <div className={styles.fieldWrapper}>
-                <Text as="label" htmlFor="dog-dob" variant="body-default-s">
-                  Dog's Date of Birth <RequiredIndicator />
+                <Text as="label" htmlFor="dog-age" variant="body-default-s">
+                  Dog's Approximate Age (years) <RequiredIndicator />
                 </Text>
                 <Input
-                  id="dog-dob"
-                  placeholder="MM/DD/YYYY"
-                  type="date"
+                  id="dog-age"
+                  placeholder="e.g., 3"
+                  type="number"
+                  min="0"
+                  max="30"
                   required
                 />
               </div>
@@ -252,7 +326,15 @@ export default function AppointmentForm() {
                   e.currentTarget.style.borderColor = "var(--neutral-alpha-medium)";
                   const files = Array.from(e.dataTransfer.files);
                   if (files.length > 0) {
-                    setDogPhoto(files[0]);
+                    const file = files[0];
+                    const maxSize = 5 * 1024 * 1024; // 5MB
+                    
+                    if (file.size > maxSize) {
+                      alert(`Dog photo is too large. Please ensure the file is under 5MB. Current size: ${(file.size / 1024 / 1024).toFixed(1)}MB`);
+                      return;
+                    }
+                    
+                    setDogPhoto(file);
                   }
                 }}
                 onClick={() => document.getElementById('dog-photo-upload')?.click()}
@@ -413,6 +495,14 @@ export default function AppointmentForm() {
                 e.preventDefault();
                 e.currentTarget.style.borderColor = "var(--neutral-alpha-medium)";
                 const files = Array.from(e.dataTransfer.files);
+                const maxSize = 5 * 1024 * 1024; // 5MB per file
+                const oversizedFiles = files.filter(file => file.size > maxSize);
+                
+                if (oversizedFiles.length > 0) {
+                  alert(`Some files are too large. Please ensure each file is under 5MB. Large files: ${oversizedFiles.map(f => f.name).join(', ')}`);
+                  return;
+                }
+                
                 setSelectedFiles([...selectedFiles, ...files]);
               }}
               onClick={() => document.getElementById('file-upload')?.click()}

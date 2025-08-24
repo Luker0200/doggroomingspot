@@ -1,6 +1,11 @@
 import { Column, Meta, Schema, Heading, Text, Flex, Badge, Card, Button, Icon } from "@once-ui-system/core";
 import { baseURL, about, person, services, business, appointment } from "@/resources";
 
+// Add CSS for Google Fonts
+const fontStyles = `
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
+`;
+
 export async function generateMetadata() {
   return Meta.generate({
     title: services.title,
@@ -78,7 +83,9 @@ export default function Services() {
   ];
 
   return (
-    <Column maxWidth="xl" horizontal="center" fillWidth>
+    <>
+      <style dangerouslySetInnerHTML={{ __html: fontStyles }} />
+      <Column maxWidth="xl" horizontal="center" fillWidth>
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -95,7 +102,12 @@ export default function Services() {
       
       {/* Header Section */}
       <Column gap="l" marginBottom="xl">
-        <Heading variant="display-strong-l" style={{ textAlign: "center" }}>
+        <Heading variant="display-strong-l" style={{ 
+          textAlign: "center",
+          color: "#1e40af", 
+          fontFamily: "'Playfair Display', serif",
+          fontWeight: "600"
+        }}>
         Grooming Brought to You
         </Heading>
         <Text variant="body-default-l" style={{ textAlign: "center" }} color="neutral-on-background-weak">
@@ -109,7 +121,7 @@ export default function Services() {
           </Column>
         </Flex>
         <Card
-          background="brand-weak"
+          background="brand-alpha-weak"
           padding="l"
           style={{ textAlign: "center", maxWidth: "600px", margin: "0 auto", position: "relative", zIndex: 1 }}
         >
@@ -133,7 +145,12 @@ export default function Services() {
 
       {/* Main Services */}
       <Column gap="xl" marginBottom="xl" fillWidth>
-        <Heading variant="display-strong-s" style={{ textAlign: "center" }}>
+        <Heading variant="display-strong-s" style={{ 
+          textAlign: "center",
+          color: "#1e40af", 
+          fontFamily: "'Playfair Display', serif",
+          fontWeight: "600"
+        }}>
           Grooming Services
         </Heading>
                  <div
@@ -160,11 +177,16 @@ export default function Services() {
                 style={{ height: "100%", minHeight: "300px", maxHeight: "340px", width: "100%", position: "relative", pointerEvents: "none" }}
               >
 
-                <Column gap="s" style={{ height: "100%", justifyContent: "space-between" }}>
-                  <Heading variant="display-strong-xs" style={{ marginBottom: "0px" }}>
+                <Column gap="xs" style={{ height: "100%", justifyContent: "space-between" }}>
+                  <Heading variant="display-strong-xs" style={{ 
+                    marginBottom: "-8px",
+                    color: "#000000", 
+                    fontFamily: "'Playfair Display', serif",
+                    fontWeight: "600"
+                  }}>
                     {service.title}
                   </Heading>
-                  <Column gap="s">
+                  <Column gap="xs">
                     <Text variant="body-strong-s" weight="default">
                       Includes:
                     </Text>
@@ -185,9 +207,6 @@ export default function Services() {
                       ))}
                     </div>
                   </Column>
-                  <Text variant="body-default-s" color="neutral-on-background-weak" style={{ textAlign: "center", marginTop: "auto" }}>
-                    Plus, a complementary headshot of your dog looking fresh!
-                  </Text>
                 </Column>
              </Card>
           ))}
@@ -196,7 +215,12 @@ export default function Services() {
 
       {/* Additional Services */}
       <Column gap="l" marginBottom="xl">
-        <Heading variant="display-strong-s" style={{ textAlign: "center" }}>
+        <Heading variant="display-strong-s" style={{ 
+          textAlign: "center",
+          color: "#1e40af", 
+          fontFamily: "'Playfair Display', serif",
+          fontWeight: "600"
+        }}>
           Additional Services
         </Heading>
         <div
@@ -233,16 +257,20 @@ export default function Services() {
         <Card
           background="brand-alpha-weak"
           padding="xl"
-          style={{ textAlign: "center", width: "100%", maxWidth: "820px", margin: "0 auto" }}
+          style={{ textAlign: "center", width: "100%", maxWidth: "820px", margin: "0 auto", pointerEvents: "none" }}
         >
           <Column gap="m">
-            <Heading variant="display-strong-s">
+            <Heading variant="display-strong-s" style={{ 
+              color: "#1e40af", 
+              fontFamily: "'Playfair Display', serif",
+              fontWeight: "600"
+            }}>
               Ready to Schedule?
             </Heading>
             <Text variant="body-default-l" color="brand-on-background-weak">
               Request your mobile grooming appointment today and give your pup the care they deserve!
             </Text>
-            <Flex horizontal="center" marginTop="m">
+            <Flex horizontal="center" marginTop="m" style={{ pointerEvents: "auto" }}>
               <Button
                 href="/appointment"
                 variant="primary"
@@ -251,7 +279,7 @@ export default function Services() {
                 Get Quote
               </Button>
             </Flex>
-            <Column gap="8" horizontal="center" marginTop="l">
+            <Column gap="8" horizontal="center" marginTop="l" style={{ pointerEvents: "auto" }}>
               <Flex gap="8" vertical="center">
                 <Icon name="email" size="xs" />
                 <a href={`mailto:${person.email}`} style={{ color: "inherit", textDecoration: "none" }}>
@@ -272,5 +300,6 @@ export default function Services() {
       </div>
 
     </Column>
+    </>
   );
 }

@@ -8,7 +8,7 @@ const person = {
   },
   role: "",
   avatar: "/images/profilepic.JPG",
-  email: "doggroomingspot@gmail.com",
+  email: "salon@doggroomingspot.com",
   phone: "(832) 275-2222",
   location: "", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: [], // optional: Leave the array empty if you don't want to display languages
@@ -53,7 +53,7 @@ const home = {
   label: "Home",
   title: `The Grooming Spot`,
   description: ``,
-  headline: <>The Grooming Spot<br />@ Your Spot</>,
+  headline: <><span style={{ fontSize: "1.2em" }}>The Grooming Spot</span><br /><span style={{ fontSize: "0.8em" }}>@ your spot!</span></>,
   featured: {
     display: false,
     title: <>Recent Grooming: <strong className="ml-4">Poodle</strong></>,
@@ -61,11 +61,11 @@ const home = {
   },
   subline: "Servicing Magnolia, Waller, Hockley, Pinehurst, Todd Mission, Plantersville, and surrounding areas.",
   features: [
-    "Convenience",
+    "Convenience @ Your Doorstep",
     "Cage-free Grooming",
-    "One on one experiences",
-    "All breeds welcome",
-    "Certified & Experienced!"
+    "One on One Experience",
+    "All Breeds Welcome",
+    "Certified & Experienced Groomer"
   ],
   buttons: {
     about: "About Us",

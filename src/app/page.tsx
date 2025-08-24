@@ -4,13 +4,15 @@ import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row, Sche
 import { home, about, services, appointment, person, newsletter, baseURL, business } from "@/resources";
 import { Mailchimp, RevolvingGallery } from "@/components";
 
-// Add CSS for placeholder styling
+// Add CSS for placeholder styling and Google Fonts
 const placeholderStyles = `
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
+  
   #preview-name::placeholder,
   #preview-phone::placeholder,
   #preview-email::placeholder,
   #preview-dog-name::placeholder {
-    color: #f5f5f5 !important;
+    color: #1e40af !important;
     opacity: 1 !important;
   }
 `;
@@ -45,7 +47,11 @@ export default function Home() {
           </RevealFx>
           )}
           <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="16">
-            <Heading wrap="nowrap" variant="display-strong-l">
+            <Heading wrap="nowrap" variant="display-strong-l" style={{ 
+              color: "#1e40af", 
+              fontFamily: "'Playfair Display', serif",
+              fontWeight: "600"
+            }}>
               {home.headline}
             </Heading>
           </RevealFx>
@@ -112,7 +118,12 @@ export default function Home() {
         <RevealFx delay={0.8} fillWidth>
           <Column gap="l" fillWidth horizontal="center">
             <Flex gap="m" vertical="center">
-              <Heading variant="display-strong-s" style={{ textAlign: "center" }}>
+              <Heading variant="display-strong-s" style={{ 
+                textAlign: "center",
+                color: "#1e40af", 
+                fontFamily: "'Playfair Display', serif",
+                fontWeight: "600"
+              }}>
                 Meet Your Dog Groomer
               </Heading>
               <Button 
@@ -143,14 +154,24 @@ export default function Home() {
                   <Flex gap="8" horizontal="center" fillWidth marginTop="s">
                     <Flex gap="8" vertical="center" style={{ pointerEvents: "auto" }}>
                       <Icon name="email" size="xs" />
-                      <a href={`mailto:${person.email}`} style={{ color: "inherit", textDecoration: "none" }}>
+                      <a href={`mailto:${person.email}`} style={{ 
+                        color: "inherit", 
+                        textDecoration: "none",
+                        display: "inline-block",
+                        transition: "none"
+                      }}>
                         <Text variant="body-default-s">{person.email}</Text>
                       </a>
                     </Flex>
                     {person.phone && (
                       <Flex gap="8" vertical="center" style={{ pointerEvents: "auto" }}>
                         <Icon name="phone" size="xs" />
-                        <a href={`tel:${person.phone.replace(/[^+\\d]/g, "")}`} style={{ color: "inherit", textDecoration: "none" }}>
+                        <a href={`tel:${person.phone.replace(/[^+\\d]/g, "")}`} style={{ 
+                          color: "inherit", 
+                          textDecoration: "none",
+                          display: "inline-block",
+                          transition: "none"
+                        }}>
                           <Text variant="body-default-s">{person.phone}</Text>
                         </a>
                       </Flex>
@@ -168,8 +189,13 @@ export default function Home() {
         <RevealFx delay={0.9} fillWidth>
           <Column gap="l" fillWidth horizontal="center">
             <Flex gap="m" vertical="center">
-              <Heading variant="display-strong-s" style={{ textAlign: "center" }}>
-                Our Grooming Services
+              <Heading variant="display-strong-s" style={{ 
+                textAlign: "center",
+                color: "#1e40af", 
+                fontFamily: "'Playfair Display', serif",
+                fontWeight: "600"
+              }}>
+               Grooming Services
               </Heading>
               <Button 
                 href={services.path} 
@@ -208,27 +234,24 @@ export default function Home() {
                        <Text variant="body-default-s">{item}</Text>
                      </Flex>
                    ))}
-                   <Text variant="body-default-xs" color="neutral-on-background-weak" style={{ fontStyle: "italic" }}>
-                     Plus a complimentary headshot!
-                   </Text>
                  </Column>
                </Column>
 
-               {/* Sanitary Groom Preview */}
-               <Column gap="m">
-                 <Heading variant="heading-strong-m">Sanitary Groom</Heading>
-                 <Column gap="4" paddingLeft="16">
-                   {["Sanitary trim", "Bath & Blow dry", "Nail trim", "Ear cleaning", "Fragrance", "Decorative Bandana"].map((item, index) => (
-                     <Flex key={index} gap="8" vertical="center">
-                       <Icon name="scissors" size="xs" />
-                       <Text variant="body-default-s">{item}</Text>
-                     </Flex>
-                   ))}
-                   <Text variant="body-default-xs" color="neutral-on-background-weak" style={{ fontStyle: "italic" }}>
-                     Plus a complimentary headshot!
-                   </Text>
-                 </Column>
-               </Column>
+                               {/* Sanitary Groom Preview */}
+                <Column gap="m">
+                  <Heading variant="heading-strong-m">Sanitary Groom</Heading>
+                  <Column gap="4" paddingLeft="16">
+                    {["Maintenance Trim", "Bath & Blow dry", "Nail trim", "Ear cleaning", "Fragrance", "Decorative Bandana"].map((item, index) => (
+                      <Flex key={index} gap="8" vertical="center">
+                        <Icon name="scissors" size="xs" />
+                        <Text variant="body-default-s">{item}</Text>
+                      </Flex>
+                    ))}
+                  </Column>
+                  <Text variant="body-default-s" color="neutral-on-background-weak" style={{ fontStyle: "italic" }}>
+                    Maintenance trim includes hair out of the eyes, sanitary areas, and under paw pads only
+                  </Text>
+                </Column>
              </div>
           </Column>
         </RevealFx>
@@ -239,7 +262,12 @@ export default function Home() {
         <RevealFx delay={1.0} fillWidth>
           <Column gap="l" fillWidth horizontal="center">
             <Flex gap="m" vertical="center">
-              <Heading variant="display-strong-s" style={{ textAlign: "center" }}>
+              <Heading variant="display-strong-s" style={{ 
+                textAlign: "center",
+                color: "#1e40af", 
+                fontFamily: "'Playfair Display', serif",
+                fontWeight: "600"
+              }}>
                 Request an Appointment
               </Heading>
               <Button 
