@@ -7,7 +7,7 @@ const person = {
     return `${this.firstName} ${this.lastName}`;
   },
   role: "",
-  avatar: "/images/profilepic.JPG",
+  avatar: "/images/profilephoto1.jpeg",
   email: "salon@doggroomingspot.com",
   phone: "(832) 275-2222",
   location: "", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
@@ -169,7 +169,7 @@ const about = {
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/trailer1test.jpg",
+            src: "/images/mobilegroomingtrailer.jpg",
             alt: "Project image",
             width: 16,
             height: 9,
@@ -201,7 +201,7 @@ const gallery = {
   description: `A photo collection by ${person.name}`,
   images: [
     {
-      src: "/images/gallery/IMG_2269.jpg",
+      src: "/images/gallery/beforeafterpoodle.jpeg",
       alt: "image",
       orientation: "horizontal",
     },

@@ -11,4 +11,38 @@
 
 .gridItem {
     margin-bottom: var(--static-space-16);
+    transition: transform 0.2s ease-in-out;
+}
+
+.gridItem:hover {
+    transform: scale(1.02);
+}
+
+/* Mobile optimizations */
+@media (max-width: 720px) {
+    .masonryGrid {
+        margin-left: calc(-1 * var(--static-space-12));
+    }
+    
+    .masonryGridColumn {
+        padding-left: var(--static-space-12);
+    }
+    
+    .gridItem {
+        margin-bottom: var(--static-space-12);
+    }
+}
+
+@media (max-width: 480px) {
+    .masonryGrid {
+        margin-left: calc(-1 * var(--static-space-8));
+    }
+    
+    .masonryGridColumn {
+        padding-left: var(--static-space-8);
+    }
+    
+    .gridItem {
+        margin-bottom: var(--static-space-8);
+    }
 }

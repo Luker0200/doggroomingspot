@@ -65,16 +65,21 @@ export default function Home() {
             </Badge>
           </RevealFx>
           )}
-          <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="16">
-            <Heading wrap="nowrap" variant="display-strong-l" style={{ 
-              color: "#1e40af", 
-              fontFamily: "'Crimson Text', serif",
-              fontWeight: "700",
-              letterSpacing: "0.02em"
-            }}>
-              {home.headline}
-            </Heading>
-          </RevealFx>
+                     <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="16">
+             <Heading 
+               variant="display-strong-l" 
+               style={{ 
+                 color: "#1e40af", 
+                 fontFamily: "'Crimson Text', serif",
+                 fontWeight: "700",
+                 letterSpacing: "0.02em",
+                 wordBreak: "break-word",
+                 overflowWrap: "break-word"
+               }}
+             >
+               {home.headline}
+             </Heading>
+           </RevealFx>
           <RevealFx translateY="4" delay={0.25} fillWidth horizontal="start" paddingBottom="16">
             <Column gap="8" fillWidth horizontal="start">
               {person.phone && (
@@ -125,7 +130,7 @@ export default function Home() {
                 justifyContent: "center", 
                 alignItems: "center",
                 flex: "0 0 auto"
-              }}>
+              }} className="s-flex-show">
                 <img 
                   src="/vectors/groomingspot-dog-logo.svg" 
                   alt="The Grooming Spot Mascot" 
@@ -138,21 +143,37 @@ export default function Home() {
               </div>
             </Flex>
           </RevealFx>
-          <RevealFx paddingTop="12" delay={0.4} horizontal="start" paddingLeft="12">
-            <Button
-              id="appointment"
-              data-border="rounded"
-              href={appointment.path}
-              variant="primary"
-              size="m"
-              weight="default"
-              arrowIcon
-            >
-              <Flex gap="8" vertical="center" paddingRight="4">
-                {home.buttons.appointment}
-              </Flex>
-            </Button>
-          </RevealFx>
+                     <RevealFx paddingTop="12" delay={0.4} horizontal="start" paddingLeft="12">
+             <Button
+               id="appointment"
+               data-border="rounded"
+               href={appointment.path}
+               variant="primary"
+               size="m"
+               weight="default"
+               suffixIcon="chevronRight"
+             >
+               {home.buttons.appointment}
+             </Button>
+           </RevealFx>
+          
+                     <RevealFx paddingTop="8" delay={0.5} horizontal="start" paddingLeft="12">
+             <Button
+               href={about.path}
+               variant="secondary"
+               size="m"
+               weight="default"
+               data-border="rounded"
+               suffixIcon="chevronRight"
+               style={{
+                 backgroundColor: "rgba(135, 206, 235, 0.8)", // Light blue with opacity
+                 borderColor: "rgba(135, 206, 235, 0.9)",
+                 color: "#1a1a1a", // Dark text for contrast
+               }}
+             >
+               Learn more about us!
+             </Button>
+           </RevealFx>
 
         </Column>
 
@@ -380,7 +401,7 @@ export default function Home() {
 
                 {/* CTA */}
                 <Flex horizontal="center" marginTop="m" style={{ pointerEvents: "auto" }}>
-                  <Button href={appointment.path} variant="primary" size="m" arrowIcon>
+                  <Button href={appointment.path} variant="primary" size="m" suffixIcon="chevronRight">
                     Fill Out a Full Form Here!
                   </Button>
                 </Flex>

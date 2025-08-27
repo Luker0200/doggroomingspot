@@ -1,5 +1,6 @@
-import { Column, Meta, Schema, Heading, Text, Flex, Badge, Card, Button, Icon } from "@once-ui-system/core";
-import { baseURL, about, person, services, business, appointment } from "@/resources";
+import React from "react";
+import { Column, Meta, Schema, Heading, Text, Flex, Badge, Card, Button, Icon, IconButton } from "@once-ui-system/core";
+import { baseURL, about, person, services, business, appointment, social } from "@/resources";
 
 // Add CSS for Google Fonts
 const fontStyles = `
@@ -135,7 +136,7 @@ export default function Services() {
             size="m"
             weight="default"
             data-border="rounded"
-            arrowIcon
+            suffixIcon="chevronRight"
           >
             Request Quote
           </Button>
@@ -279,39 +280,78 @@ export default function Services() {
                 href="/appointment"
                 variant="primary"
                 size="l"
+                suffixIcon="chevronRight"
               >
                 Get Quote
               </Button>
             </Flex>
-            <Column gap="8" horizontal="center" marginTop="l" style={{ pointerEvents: "auto" }}>
-              {person.phone && (
-                <Flex gap="12" vertical="center">
-                  <Icon name="phone" size="l" />
-                  <a href={`tel:${person.phone.replace(/[^+\\d]/g, "")}`} style={{ color: "inherit", textDecoration: "none" }}>
-                    <Text variant="display-strong-l" style={{ 
-                      fontWeight: "900", 
-                      color: "#1a1a1a",
-                      fontFamily: "'Arial Black', 'Helvetica Neue', Arial, sans-serif",
-                      fontSize: "2.5rem",
-                      letterSpacing: "0.05em"
-                    }}>
-                      {person.phone.replace(/\D/g, '').replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')}
-                    </Text>
-                  </a>
+            
+            {/* Social Media Buttons */}
+            {social.length > 0 && (
+              <Column gap="12" horizontal="center" marginTop="l" style={{ pointerEvents: "auto" }}>
+                <Flex paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth data-border="rounded">
+                  {social.map(
+                    (item) =>
+                      item.link && (
+                          <React.Fragment key={item.name}>
+                              <Button
+                                  className="s-flex-hide"
+                                  key={item.name}
+                                  href={item.link}
+                                  prefixIcon={item.icon}
+                                  label={item.name}
+                                  size="s"
+                                  weight="default"
+                                  variant="secondary"
+                              />
+                              <IconButton
+                                  className="s-flex-show"
+                                  size="l"
+                                  key={`${item.name}-icon`}
+                                  href={item.link}
+                                  icon={item.icon}
+                                  variant="secondary"
+                              />
+                          </React.Fragment>
+                      ),
+                  )}
                 </Flex>
-              )}
-              <Flex gap="12" vertical="center">
-                <Icon name="email" size="l" />
-                <a href={`mailto:${person.email}`} style={{ color: "inherit", textDecoration: "none" }}>
-                  <Text variant="heading-strong-l" style={{ 
-                    fontWeight: "800", 
-                    color: "#1a1a1a",
-                    fontFamily: "'Arial Black', 'Helvetica Neue', Arial, sans-serif",
-                    fontSize: "1.8rem"
-                  }}>{person.email}</Text>
-                </a>
-              </Flex>
-            </Column>
+                
+                {/* Contact Info - Styled like home page */}
+                <Column gap="8" horizontal="center" marginTop="m">
+                  {person.phone && (
+                    <Flex gap="12" vertical="center" horizontal="center">
+                      <a href={`tel:${person.phone.replace(/[^+\\d]/g, "")}`} style={{ color: "inherit", textDecoration: "none" }}>
+                        <Text variant="display-strong-l" style={{ 
+                          fontWeight: "800", 
+                          color: "#1a1a1a",
+                          fontFamily: "'Poppins', sans-serif",
+                          fontSize: "clamp(1.5rem, 4vw, 2.5rem)",
+                          letterSpacing: "0.02em",
+                          wordBreak: "break-word",
+                          overflowWrap: "break-word"
+                        }}>
+                          {person.phone.replace(/\D/g, '').replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')}
+                        </Text>
+                      </a>
+                    </Flex>
+                  )}
+                  <Flex gap="12" vertical="center" horizontal="center">
+                    <a href={`mailto:${person.email}`} style={{ color: "inherit", textDecoration: "none" }}>
+                      <Text variant="body-default-s" style={{ 
+                        fontWeight: "400", 
+                        color: "#666666",
+                        fontFamily: "'Arial', sans-serif",
+                        fontSize: "clamp(0.8rem, 2.5vw, 0.9rem)",
+                        fontStyle: "italic",
+                        wordBreak: "break-word",
+                        overflowWrap: "break-word"
+                      }}>{person.email}</Text>
+                    </a>
+                  </Flex>
+                </Column>
+              </Column>
+            )}
           </Column>
         </Card>
       </div>

@@ -145,92 +145,79 @@ export default function About() {
             >
               {person.role}
             </Text>
-            <Flex fillWidth horizontal="start" paddingTop="l" paddingBottom="m">
-              <Flex className="s-flex-hide" horizontal="start">
-                <Button
-                  href={appointment.path}
-                  variant="primary"
-                  size="m"
-                  weight="default"
-                  data-border="rounded"
-                  arrowIcon
-                >
-                  Click here to fill out our appointment form!
-                </Button>
-              </Flex>
-              <Flex className="s-flex-show" fillWidth horizontal="center">
-                <Button
-                  href={appointment.path}
-                  variant="primary"
-                  size="m"
-                  weight="default"
-                  data-border="rounded"
-                  arrowIcon
-                >
-                  Click here to fill out our appointment form!
-                </Button>
-              </Flex>
-            </Flex>
             {social.length > 0 && (
-              <Column gap="12" horizontal="start">
-                <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="start" fitWidth data-border="rounded">
-                  {social.map(
-                    (item) =>
-                      item.link && (
-                          <React.Fragment key={item.name}>
-                              <Button
-                                  className="s-flex-hide"
-                                  key={item.name}
-                                  href={item.link}
-                                  prefixIcon={item.icon}
-                                  label={item.name}
-                                  size="s"
-                                  weight="default"
-                                  variant="secondary"
-                              />
-                              <IconButton
-                                  className="s-flex-show"
-                                  size="l"
-                                  key={`${item.name}-icon`}
-                                  href={item.link}
-                                  icon={item.icon}
-                                  variant="secondary"
-                              />
-                          </React.Fragment>
-                      ),
-                  )}
-                </Flex>
-                <Column gap="8" fillWidth horizontal="start">
-                  {person.phone && (
-                    <Flex gap="12" vertical="center">
-                      <Icon name="phone" size="l" />
-                      <a href={`tel:${person.phone.replace(/[^+\\d]/g, "")}`} style={{ color: "inherit", textDecoration: "none" }}>
-                        <Text variant="display-strong-l" style={{ 
-                          fontWeight: "900", 
-                          color: "#1a1a1a",
-                          fontFamily: "'Arial Black', 'Helvetica Neue', Arial, sans-serif",
-                          fontSize: "2.5rem",
-                          letterSpacing: "0.05em"
-                        }}>
-                          {person.phone.replace(/\D/g, '').replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')}
-                        </Text>
-                      </a>
-                    </Flex>
-                  )}
-                  <Flex gap="12" vertical="center">
-                    <Icon name="email" size="l" />
-                    <a href={`mailto:${person.email}`} style={{ color: "inherit", textDecoration: "none" }}>
-                      <Text variant="heading-strong-l" style={{ 
-                        fontWeight: "800", 
-                        color: "#1a1a1a",
-                        fontFamily: "'Arial Black', 'Helvetica Neue', Arial, sans-serif",
-                        fontSize: "1.8rem"
-                      }}>{person.email}</Text>
-                    </a>
-                  </Flex>
-                </Column>
-              </Column>
-            )}
+              <Column gap="8" horizontal="center" paddingTop="m">
+                <Flex gap="8" wrap horizontal="center" fitWidth data-border="rounded">
+                 {social.map(
+                   (item) =>
+                     item.link && (
+                         <React.Fragment key={item.name}>
+                             <Button
+                                 className="s-flex-hide"
+                                 key={item.name}
+                                 href={item.link}
+                                 prefixIcon={item.icon}
+                                 label={item.name}
+                                 size="s"
+                                 weight="default"
+                                 variant="secondary"
+                             />
+                             <IconButton
+                                 className="s-flex-show"
+                                 size="l"
+                                 key={`${item.name}-icon`}
+                                 href={item.link}
+                                 icon={item.icon}
+                                 variant="secondary"
+                             />
+                         </React.Fragment>
+                     ),
+                 )}
+               </Flex>
+                               
+               <Column gap="8" horizontal="center" marginTop="m">
+                 {person.phone && (
+                   <Flex gap="12" vertical="center" horizontal="center">
+                     <a href={`tel:${person.phone.replace(/[^+\\d]/g, "")}`} style={{ color: "inherit", textDecoration: "none" }}>
+                       <Text variant="display-strong-l" style={{ 
+                         fontWeight: "800", 
+                         color: "#1a1a1a",
+                         fontFamily: "'Poppins', sans-serif",
+                         fontSize: "2.5rem",
+                         letterSpacing: "0.02em"
+                       }}>
+                         {person.phone.replace(/\D/g, '').replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')}
+                       </Text>
+                     </a>
+                   </Flex>
+                 )}
+                 <Flex gap="12" vertical="center" horizontal="center">
+                   <a href={`mailto:${person.email}`} style={{ color: "inherit", textDecoration: "none" }}>
+                     <Text variant="body-default-s" style={{ 
+                       fontWeight: "400", 
+                       color: "#666666",
+                       fontFamily: "'Arial', sans-serif",
+                       fontSize: "0.9rem",
+                       fontStyle: "italic"
+                     }}>{person.email}</Text>
+                   </a>
+                 </Flex>
+               </Column>
+               
+               <Flex fillWidth horizontal="center" marginTop="m">
+                 <Button
+                   href={appointment.path}
+                   variant="primary"
+                   size="m"
+                   weight="default"
+                   data-border="rounded"
+                   suffixIcon="chevronRight"
+                 >
+                   Click here to fill out our appointment form!
+                 </Button>
+               </Flex>
+             </Column>
+           )}
           </Column>
 
           {about.intro.display && (
@@ -351,7 +338,7 @@ export default function About() {
                           size="m"
                           weight="default"
                           data-border="rounded"
-                          arrowIcon
+                          suffixIcon="chevronRight"
                         >
                           Request Quote
                         </Button>
@@ -364,20 +351,17 @@ export default function About() {
                             key={index}
                             border="neutral-medium"
                             radius="m"
-                            //@ts-ignore
-                            minWidth={image.width}
-                            //@ts-ignore
-                            height={image.height}
+                            style={{ width: "100%" }}
                           >
-                            <Media
-                              enlarge
-                              radius="m"
-                              //@ts-ignore
-                              sizes={image.width.toString()}
-                              //@ts-ignore
-                              alt={image.alt}
-                              //@ts-ignore
+                            <img
                               src={image.src}
+                              alt={image.alt}
+                              style={{ 
+                                width: "100%", 
+                                height: "auto", 
+                                display: "block",
+                                borderRadius: "8px"
+                              }}
                             />
                           </Flex>
                         ))}

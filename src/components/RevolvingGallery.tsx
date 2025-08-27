@@ -66,16 +66,16 @@ export const RevolvingGallery: React.FC = () => {
           overflow: "hidden",
         }}
       >
-        <Media
+        <img
           src={currentImage.src}
           alt={currentImage.alt}
-          aspectRatio={currentImage.orientation === "vertical" ? "3 / 4" : "16 / 9"}
-          radius="m"
           style={{
             width: "100%",
             height: "100%",
-            objectFit: "contain",
+            display: "block",
+            borderRadius: "8px",
             transition: "opacity 0.5s ease-in-out",
+            objectFit: "contain",
           }}
         />
       </Flex>
