@@ -12,6 +12,12 @@ export const Footer = () => {
       padding="8"
       horizontal="center"
       mobileDirection="column"
+      style={{ 
+        marginTop: "auto", // Push footer to bottom
+        flexShrink: 0,     // Prevent footer from shrinking
+        position: "relative",
+        zIndex: 1
+      }}
     >
       <Flex
         className={styles.mobile}

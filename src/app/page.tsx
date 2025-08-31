@@ -15,6 +15,8 @@ const placeholderStyles = `
     color: #1e40af !important;
     opacity: 1 !important;
   }
+
+
 `;
 
 export default function Home() {

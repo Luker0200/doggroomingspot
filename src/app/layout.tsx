@@ -164,8 +164,9 @@ export default async function RootLayout({
               padding="l"
               horizontal="center"
               flex={1}
+              style={{ minHeight: "calc(100vh - 200px)" }} // Ensure main content takes up space
             >
-              <Flex horizontal="center" fillWidth minHeight="0">
+              <Flex horizontal="center" fillWidth minHeight="0" style={{ flex: "1 0 auto" }}>
                 <RouteGuard>
                   {children}
                 </RouteGuard>
