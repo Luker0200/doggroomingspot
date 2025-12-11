@@ -80,7 +80,7 @@ function slugify(str: string): string {
     .replace(/\s+/g, "-") // Replace spaces with -
     .replace(/&/g, "-and-") // Replace & with 'and'
     .replace(/[^\w\-]+/g, "") // Remove all non-word characters except for -
-    .replace(/\-\-+/g, "-"); // Replace multiple - with single -
+    .replace(/\-\-+/g, "-"); // Replace multiple - with single - test
 }
 
 function createHeading(as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6") {
@@ -189,4 +189,5 @@ export function CustomMDX(props: CustomMDXProps) {
   return (
     <MDXRemote {...props} components={{ ...components, ...(props.components || {}) }} />
   );
+
 }
